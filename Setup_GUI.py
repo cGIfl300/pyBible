@@ -32,6 +32,7 @@ import os
 from db_creation import *
 from app_secret_garden import app_secret_garden
 from configuration_langues import Configuration_Langues
+from app_edit_bibles import AppEditBibles
 
 def do_initialiser(event):
     App = db_creation()
