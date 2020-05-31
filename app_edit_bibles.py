@@ -150,18 +150,30 @@ class AppEditBibles(Toplevel):
         
         ''' Binding
         '''
-        self.LSTLangues.bind('<<ListboxSelect>>', self.do_SelectLangues)
-        self.LSTTraductions.bind('<<ListboxSelect>>', self.do_SelectTraductions)
-        self.LSTLivres.bind('<<ListboxSelect>>', self.do_SelectLivres)
+        self.LSTLangues.bind('<Button-1>', self.do_SelectLangues)
+        self.LSTTraductions.bind('<Button-1>', self.do_SelectTraductions)
+        self.LSTLivres.bind('<Button-1>', self.do_SelectLivres)
 
     def do_SelectLangues(self, event):
         self.LSTTraductions.delete('0', 'end')
         self.LSTLivres.delete('0', 'end')
         self.Code_Langue = self.LSTLangues.selection_get()
         self.Code_Langue = self.do_code_langue(self.Code_Langue)
+        VAR_row = 0
+        for l in Bibles.select().where(Bibles.langue == self.Code_Langue):
+            self.LSTTraductions.insert(VAR_row, l.titre)
+            VAR_row += 1
     
     def do_SelectTraductions(self, event):
         self.LSTLivres.delete('0', 'end')
+        self.Traduction = self.LSTTraductions.selection_get()
+        VAR_row = 0
+        for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
+            if len(l.Nom_Livre) > 1:
+                self.LSTLivres.insert(VAR_row, l.Nom_Livre)
+            else:
+                self.LSTLivres.insert(VAR_row, l.N_Livres)
+            VAR_row += 1
     
     def do_SelectLivres(self, event):
         pass
@@ -176,8 +188,9 @@ class AppEditBibles(Toplevel):
     
     def do_feed_lists(self):
         self.do_update_db()
-        
         self.LSTLangues.delete('0','end')
+        self.LSTTraductions.delete('0', 'end')
+        self.LSTLivres.delete('0', 'end')
         VAR_row = 0
         for l in self.langues:
             if len(l[1]) > 0:
@@ -204,6 +217,6 @@ if __name__ == '__main__':
     w = Tk()
     w.after(30000, w.destroy)
     w.wm_state('icon')
-    App = AppEditBibles()
+    App = AppEditBibles(debug = True)
     App.run()
     w.mainloop()

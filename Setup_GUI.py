@@ -62,9 +62,8 @@ def do_EditerLangues(event):
     app.run()
     
 def do_EditerBibles(event):
-    #app = AppEditBibles()
-    #app.run()
-    pass
+    app = AppEditBibles()
+    app.run()
         
 if __name__ == '__main__':
     w = Tk()
