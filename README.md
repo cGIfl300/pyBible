@@ -1,4 +1,5 @@
 # pyBible
+**PROJET EN COURS DE REALISATION**  
 
 Outil de lecture et d'études bibliques OpenSource.  
 
@@ -49,4 +50,4 @@ Possibilité d'ajouter des commentaires:
 
 ## Utilisateurs
 
-Starting here
+Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db .  

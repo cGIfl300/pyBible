@@ -142,13 +142,24 @@ class AppEditBibles(Toplevel):
         self.entry_shortcut.pack(fill = BOTH,
                               expand = True)
         self.lbl_longue.pack(fill = BOTH,
-                              expand = True)
+                            expand = True)
         self.entry_longue.pack(fill = BOTH,
                               expand = True)
         
         ''' Binding
         '''
-        #self.LSTLangues.bind('<<ListboxSelect>>', self.do_SelectLangues)
+        self.LSTLangues.bind('<<ListboxSelect>>', self.do_SelectLangues)
+        self.LSTTraductions.bind('<<ListboxSelect>>', self.do_SelectTraductions)
+        self.LSTLivres.bind('<<ListboxSelect>>', self.do_SelectLivres)
+
+    def do_SelectLangues(self, event):
+        pass
+    
+    def do_SelectTraductions(self, event):
+        pass
+    
+    def do_SelectLivres(self, event):
+        pass
     
     def run(self):
         self.interface()

@@ -62,6 +62,8 @@ def do_EditerLangues(event):
     app.run()
     
 def do_EditerBibles(event):
+    #app = AppEditBibles()
+    #app.run()
     pass
         
 if __name__ == '__main__':
