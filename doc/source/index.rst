@@ -56,3 +56,6 @@ Référence API
 
 .. automodule:: configuration_langues
    :members:
+   
+.. automodule:: app_edit_bibles
+   :members:

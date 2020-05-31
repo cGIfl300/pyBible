@@ -146,6 +146,8 @@ class AppEditBibles(Toplevel):
         self.entry_longue.pack(fill = BOTH,
                               expand = True)
         
+        self.do_feed_lists()
+        
         ''' Binding
         '''
         self.LSTLangues.bind('<<ListboxSelect>>', self.do_SelectLangues)
@@ -153,13 +155,47 @@ class AppEditBibles(Toplevel):
         self.LSTLivres.bind('<<ListboxSelect>>', self.do_SelectLivres)
 
     def do_SelectLangues(self, event):
-        pass
+        self.LSTTraductions.delete('0', 'end')
+        self.LSTLivres.delete('0', 'end')
+        self.Code_Langue = self.LSTLangues.selection_get()
+        self.Code_Langue = self.do_code_langue(self.Code_Langue)
     
     def do_SelectTraductions(self, event):
-        pass
+        self.LSTLivres.delete('0', 'end')
     
     def do_SelectLivres(self, event):
         pass
+    
+    def do_update_db(self):
+        self.langues = []
+        self.traductions = []
+        self.livres = []
+        
+        for l in Langues.select():
+            self.langues.append([l.langue, l.description])
+    
+    def do_feed_lists(self):
+        self.do_update_db()
+        
+        self.LSTLangues.delete('0','end')
+        VAR_row = 0
+        for l in self.langues:
+            if len(l[1]) > 0:
+                # Si il existe une description de la langue alors on l'utilise
+                self.LSTLangues.insert(VAR_row, l[1])
+            else:
+                # Sinon, on utilise le code langue
+                self.LSTLangues.insert(VAR_row, l[0])
+            VAR_row += 1
+            
+    def do_code_langue(self, code):
+        ''' Retourne le code langue en fonction du code langue ou de la description langue
+        '''
+        for l in self.langues:
+            if l[0] == code:
+                return code
+            if l[1] == code:
+                return l[0]
     
     def run(self):
         self.interface()
