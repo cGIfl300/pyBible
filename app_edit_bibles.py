@@ -157,7 +157,10 @@ class AppEditBibles(Toplevel):
     def do_SelectLangues(self, event):
         self.LSTTraductions.delete('0', 'end')
         self.LSTLivres.delete('0', 'end')
-        self.Code_Langue = self.LSTLangues.selection_get()
+        try:
+            self.Code_Langue = self.LSTLangues.selection_get()
+        except:
+            return 0
         self.Code_Langue = self.do_code_langue(self.Code_Langue)
         VAR_row = 0
         for l in Bibles.select().where(Bibles.langue == self.Code_Langue):
@@ -166,7 +169,10 @@ class AppEditBibles(Toplevel):
     
     def do_SelectTraductions(self, event):
         self.LSTLivres.delete('0', 'end')
-        self.Traduction = self.LSTTraductions.selection_get()
+        try:
+            self.Traduction = self.LSTTraductions.selection_get()
+        except:
+            pass
         VAR_row = 0
         for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
             if len(l.Nom_Livre) > 1:
@@ -176,7 +182,15 @@ class AppEditBibles(Toplevel):
             VAR_row += 1
     
     def do_SelectLivres(self, event):
-        pass
+        try:
+            self.Numéro_Livre = self.LSTLivres.selection_get()
+        except:
+            pass
+        self.description.config(text = f''''Langue: {self.do_langue(self.Code_Langue)}
+Titre: {self.Traduction}
+Livre N°: {self.Numéro_Livre}''')
+        self.entry_shortcut.delete('0', 'end')
+        self.entry_longue.delete('0', 'end')
     
     def do_update_db(self):
         self.langues = []
@@ -209,6 +223,15 @@ class AppEditBibles(Toplevel):
                 return code
             if l[1] == code:
                 return l[0]
+    
+    def do_langue(self, code):
+        ''' Retourne la langue en fonction du code langue
+        '''
+        for l in self.langues:
+            if l[1] == code:
+                return code
+            if l[0] == code:
+                return l[1]
     
     def run(self):
         self.interface()
