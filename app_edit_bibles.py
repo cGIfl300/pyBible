@@ -153,6 +153,7 @@ class AppEditBibles(Toplevel):
         self.LSTLangues.bind('<Button-1>', self.do_SelectLangues)
         self.LSTTraductions.bind('<Button-1>', self.do_SelectTraductions)
         self.LSTLivres.bind('<Button-1>', self.do_SelectLivres)
+        self.menu_enregistrer.btn.bind('<Button-1>', self.do_validate)
 
     def do_SelectLangues(self, event):
         self.LSTTraductions.delete('0', 'end')
@@ -175,10 +176,7 @@ class AppEditBibles(Toplevel):
             pass
         VAR_row = 0
         for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
-            if len(l.Nom_Livre) > 1:
-                self.LSTLivres.insert(VAR_row, l.Nom_Livre)
-            else:
-                self.LSTLivres.insert(VAR_row, l.N_Livres)
+            self.LSTLivres.insert(VAR_row, l.N_Livres)
             VAR_row += 1
     
     def do_SelectLivres(self, event):
@@ -195,7 +193,12 @@ Livre N°: {self.Numéro_Livre}''')
             if str(l.N_Livres) == str(self.Numéro_Livre):
                 self.entry_longue.insert('0', l.Nom_Livre)
                 self.entry_shortcut.insert('0', l.Shortcut)
-                print('Trouvé!')
+                
+    def do_validate(self, event):
+        q = (Livres.update({Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()})
+            .where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
+                                                            Livres.N_Livres == self.Numéro_Livre)))
+        q.execute()
                 
     def do_update_db(self):
         self.langues = []
