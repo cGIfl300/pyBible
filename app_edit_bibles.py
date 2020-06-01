@@ -26,6 +26,8 @@ from image_set import image_set
 from configuration import *
 from peewee import *
 from db_model import *
+import pygame
+pygame.init()
 
 class AppEditBibles(Toplevel):
     ''' Application d'édition des tites des livres contenus dans les Bibles.
@@ -195,6 +197,8 @@ Livre N°: {self.Numéro_Livre}''')
                 self.entry_shortcut.insert('0', l.Shortcut)
                 
     def do_validate(self, event):
+        s = pygame.mixer.Sound('sounds/blaster08.ogg')
+        s.play()
         q = (Livres.update({Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()})
             .where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
                                                             Livres.N_Livres == self.Numéro_Livre)))
