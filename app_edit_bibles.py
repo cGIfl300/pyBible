@@ -185,13 +185,18 @@ class AppEditBibles(Toplevel):
         try:
             self.Numéro_Livre = self.LSTLivres.selection_get()
         except:
-            pass
+            return 0
         self.description.config(text = f''''Langue: {self.do_langue(self.Code_Langue)}
 Titre: {self.Traduction}
 Livre N°: {self.Numéro_Livre}''')
         self.entry_shortcut.delete('0', 'end')
         self.entry_longue.delete('0', 'end')
-    
+        for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
+            if str(l.N_Livres) == str(self.Numéro_Livre):
+                self.entry_longue.insert('0', l.Nom_Livre)
+                self.entry_shortcut.insert('0', l.Shortcut)
+                print('Trouvé!')
+                
     def do_update_db(self):
         self.langues = []
         self.traductions = []
