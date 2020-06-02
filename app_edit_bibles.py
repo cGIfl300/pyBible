@@ -158,6 +158,7 @@ class AppEditBibles(Toplevel):
         self.LSTTraductions.bind('<Button-1>', self.do_SelectTraductions)
         self.LSTLivres.bind('<Button-1>', self.do_SelectLivres)
         self.menu_enregistrer.btn.bind('<Button-1>', self.do_validate)
+        self.menu_exporter.btn.bind('<Button-1>', self.do_export)
         self.menu_importer.btn.bind('<Button-1>', self.do_import)
 
     def do_SelectLangues(self, event):
@@ -187,13 +188,8 @@ class AppEditBibles(Toplevel):
     def do_export(self, event):
         ''' Exporte un modèle de nomage de livres
         '''
-        if self.Traduction == '':
-            return 0
-        for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
-            if str(l.N_Livres) == str(self.Numéro_Livre):
-                self.entry_longue.insert('0', l.Nom_Livre)
-                self.entry_shortcut.insert('0', l.Shortcut)
-        pass
+        s = pygame.mixer.Sound('sounds/mgb-7.ogg')
+        s.play()
     
     def do_import(self, event):
         ''' Importe un modèle de nomage de livres et l'applique à la traduction courante
