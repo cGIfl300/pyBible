@@ -36,6 +36,9 @@ class AppEditBibles(Toplevel):
     def __init__(self, debug = False):
         Toplevel.__init__(self)
         self.debug = debug
+        self.Traduction = ''
+        self.Code_Langue = ''
+        self.Numéro_Livre = ''
     
     def interface(self):
         ''' Interface de la fenêtre
@@ -188,6 +191,19 @@ class AppEditBibles(Toplevel):
     def do_export(self, event):
         ''' Exporte un modèle de nomage de livres
         '''
+        if self.Traduction == '':
+            return 0
+        self.entry_shortcut.delete('0', 'end')
+        self.entry_longue.delete('0', 'end')
+        self.description.config(text = f'Exportation\nréussie de\n{self.Code_Langue}\n{self.Traduction}')
+        
+        liste_livres = []
+        
+        for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
+            liste_livres.append([l.Nom_Livre, l.Shortcut])
+            
+        if self.debug:
+            print(f'{liste_livres}')
         s = pygame.mixer.Sound('sounds/mgb-7.ogg')
         s.play()
     
