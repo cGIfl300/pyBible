@@ -29,6 +29,7 @@ from db_model import *
 import pygame
 import time
 import codecs
+from app_applytemplate import AppApplyTemplate
 
 pygame.init()
 
@@ -227,6 +228,8 @@ class AppEditBibles(Toplevel):
     def do_import(self, event):
         ''' Importe un modèle de nomage de livres et l'applique à la traduction courante
         '''
+        app = AppApplyTemplate()
+        app.run()
         s = pygame.mixer.Sound('sounds/mgb-7.ogg')
         s.play()
     
