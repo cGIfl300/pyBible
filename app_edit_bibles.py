@@ -100,7 +100,8 @@ class AppEditBibles(Toplevel):
                                 fg = couleur_texte_saisie,
                                 relief = 'flat')
         
-        self.menu_copier = creer_bouton(self.panel1, image_locale = 'images/menu_importer')
+        self.menu_exporter = creer_bouton(self.panel1, image_locale = 'images/menu_exporter')
+        self.menu_importer = creer_bouton(self.panel1, image_locale = 'images/menu_importer')
         self.panel_saisie.pack(fill = BOTH,
                                expand = True,
                                side = LEFT)
