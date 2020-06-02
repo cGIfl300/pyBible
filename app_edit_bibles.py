@@ -27,6 +27,8 @@ from configuration import *
 from peewee import *
 from db_model import *
 import pygame
+import time
+import codecs
 
 pygame.init()
 
@@ -39,6 +41,7 @@ class AppEditBibles(Toplevel):
         self.Traduction = ''
         self.Code_Langue = ''
         self.Numéro_Livre = ''
+        self.Template = ''
     
     def interface(self):
         ''' Interface de la fenêtre
@@ -204,7 +207,16 @@ class AppEditBibles(Toplevel):
         if self.debug:
             print(f'{liste_livres}')
             
-        self.description.config(text = f'Exportation\nréussie de\n{self.Code_Langue}\n{self.Traduction}')
+        Nom_Template = self.Code_Langue + '-' + str(time.time()) + '.tpl'
+        if self.debug:
+            print(f'{Nom_Template}')
+            
+        fichier = codecs.open('data/' + Nom_Template, 'w', 'utf-8')
+        for l in liste_livres:
+            fichier.write(l[0].strip() + '$' + l[1].strip() + '\n')
+        fichier.close()
+            
+        self.description.config(text = f'Exportation réussie de:\n{Nom_Template}\n{self.Traduction}')
         s = pygame.mixer.Sound('sounds/mgb-7.ogg')
         s.play()
     
