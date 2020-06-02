@@ -27,6 +27,7 @@ from configuration import *
 from peewee import *
 from db_model import *
 import pygame
+
 pygame.init()
 
 class AppEditBibles(Toplevel):
@@ -200,10 +201,15 @@ Livre N°: {self.Numéro_Livre}''')
     def do_validate(self, event):
         s = pygame.mixer.Sound('sounds/blaster08.ogg')
         s.play()
-        q = (Livres.update({Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()})
-            .where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
-                                                            Livres.N_Livres == self.Numéro_Livre)))
-        q.execute()
+        try:
+            q = (Livres.update({Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()})
+                .where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
+                                                                Livres.N_Livres == self.Numéro_Livre)))
+            q.execute()
+        except:
+            if self.debug:
+                print('Erreur: do_validate')
+            pass
                 
     def do_update_db(self):
         self.langues = []
