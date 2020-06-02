@@ -24,7 +24,7 @@ Sauf si vous utilisez directement les scripts, il ne peut pas être utilisé apr
 
 ### (DEV) Todo Setup_GUI
 
-- Edition du titre des Bibles et du nom des livres - en cours -  
+- Utilisation de modèles de nomage des lives (Editeur de Bibles) - en cours -  
 - Interface de lecture desktop  
 
 ## (DEV) Todo pyBible

@@ -195,7 +195,6 @@ class AppEditBibles(Toplevel):
             return 0
         self.entry_shortcut.delete('0', 'end')
         self.entry_longue.delete('0', 'end')
-        self.description.config(text = f'Exportation\nréussie de\n{self.Code_Langue}\n{self.Traduction}')
         
         liste_livres = []
         
@@ -204,6 +203,8 @@ class AppEditBibles(Toplevel):
             
         if self.debug:
             print(f'{liste_livres}')
+            
+        self.description.config(text = f'Exportation\nréussie de\n{self.Code_Langue}\n{self.Traduction}')
         s = pygame.mixer.Sound('sounds/mgb-7.ogg')
         s.play()
     
