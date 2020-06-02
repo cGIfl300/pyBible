@@ -1,7 +1,7 @@
 # pyBible
 **PROJET EN COURS DE REALISATION**  
 
-![](/home/nume/src/pyBible/images/backend-global_view.png) 
+![](images/backend-global-view.png) 
 
 Outil de lecture et d'études bibliques OpenSource.  
 
