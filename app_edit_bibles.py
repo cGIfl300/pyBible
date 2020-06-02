@@ -213,6 +213,10 @@ class AppEditBibles(Toplevel):
             
         fichier = codecs.open('data/' + Nom_Template, 'w', 'utf-8')
         for l in liste_livres:
+            if l[0].strip() == '':
+                l[0] = '-'
+            if l[1].strip() == '':
+                l[1] = '-'
             fichier.write(l[0].strip() + '$' + l[1].strip() + '\n')
         fichier.close()
             
