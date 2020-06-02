@@ -155,6 +155,7 @@ class AppApplyTemplate(Toplevel):
         self.template = []
         contenu = fichier.readlines()
         for l in contenu:
+            l = l.strip('\n')
             self.template.append(l.split('$'))
         fichier.close()
         VAR_row = 0
