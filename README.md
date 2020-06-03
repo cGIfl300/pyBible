@@ -66,5 +66,56 @@ L'interface de configuration et de génération de la base de donnée derait s'o
 ![](images/doc-img001.png)   
 Vous pouvez faire le trie des Bibles qui vous intéresse en supprimant celles qui ne vous intéresse pas dans data/xml .
 
-Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée.  
+Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
 Dans ce cas il vous suffira d'indiquer le chemin de la base de donnée sqlite en cliquant sur 'secret_garden.py'.  
+
+Pour ceux qui désirent générer leur propre base de donnée, une fois le chemin et le type de base de donnée configuré dans secret-garden.py il fous suffit cliquez sur 'initialiser la base locale'. Que votre base soit sqlite ou mysql, elle devra être initialiser, cette étape créé les tables et tous les bidules dont le logiciel a besoins dans la base de données.  
+
+####Importer XML  
+
+L'importation XML peut être longue, surtout sur des configuration légère, vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
+L'importation XML importe toutes les Bibles présentes dans data/xml .  
+L'application se fige alors pour éviter toute interaction avec la base de données... allez boire un café ou deux.  
+
+####Editeur de langues  
+
+L'éditeur de langues permet d'éditer la correspondance entre les codes langue et l'éctiture littérale de celle-ci.  
+*Exemple: FRE -> Français*  
+
+![](images/doc-img002.png)  
+
+####Editeur de Bibles  
+
+L'éditeur de Bibles permet l'édition du nom des différents livres contenu dans chaque Bible ainsi que leur diminutif.  
+L'utilisation de modèles (templates) est recommandée. Vous pouvez les créer depuis l'interface de configuration et les appliquer à une autre Bible ensuite.  
+
+![](images/doc-img003.png)   
+
+Vous pouvez éditer le nom long et court de chaque Bible, n'oubliez pas de valider pour que les changements soient pris en compte.  
+
+![](images/doc-img006.png)   
+
+Il vous suffit de cliquer sur 'exporter' pour exporter le modèle utilisé pour la Bible sélectionnée.  
+
+![](images/doc-img005.png)   
+![](images/doc-img007.png)   
+
+Pour l'appliquer à une autre Bible, il vous suffit de cliquer sur 'importer'.  
+
+![](images/doc-img004.png)   
+
+L'interface d'importation s'affiche alors. Vous retrouverez vos modèles (templates) ainsi que les Bibles présentes dans la base de donnée.  
+
+![](images/doc-img008.png)   
+
+Sélectionnez la Bible à laquelle vous désirez appliquer le modèle, le nomage actuel des livres s'affiche.  
+
+![](images/doc-img009.png)   
+
+Vous pouvez annuler à tout moment en cliquant sur le bouton 'annuler'.  
+
+![](images/doc-img010.png)   
+
+Une fois la Bible et le modèle choisis, il vous suffit de valider les modification en cliquant sur 'valider' à ce moment là, l'ancien nomage est remplacé par celui du modèle. Les noms des livres sont modifié!  
+
+![](images/doc-img011.png)   
