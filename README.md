@@ -54,13 +54,13 @@ Possibilité d'ajouter des commentaires:
 Sous Windows, débrouillez-vous, vous avez l'habitude.  
 Sous Linux, allez dans le répertoire destiné aux code sources. Vous devez être sous un environement graphique.  
 
-####Réalisez une copie locale de ce dépôt:  
+#### Réalisez une copie locale de ce dépôt:  
 git clone https://github.com/cgifl300/pybible.git  
-####Ensuite allez dans pybible:  
+#### Ensuite allez dans pybible:  
 cd pybible  
-####Reconstituez l'environement python avec toutes ses librairies:  
+#### Reconstituez l'environement python avec toutes ses librairies:  
 make init  
-####Lancez l'interface de configuration:  
+#### Lancez l'interface de configuration:  
 make setup  
 L'interface de configuration et de génération de la base de donnée derait s'ouvrir:  
 ![](images/doc-img001.png)   
@@ -71,20 +71,20 @@ Dans ce cas il vous suffira d'indiquer le chemin de la base de donnée sqlite en
 
 Pour ceux qui désirent générer leur propre base de donnée, une fois le chemin et le type de base de donnée configuré dans secret-garden.py il fous suffit cliquez sur 'initialiser la base locale'. Que votre base soit sqlite ou mysql, elle devra être initialiser, cette étape créé les tables et tous les bidules dont le logiciel a besoins dans la base de données.  
 
-####Importer XML  
+#### Importer XML  
 
 L'importation XML peut être longue, surtout sur des configuration légère, vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
 L'importation XML importe toutes les Bibles présentes dans data/xml .  
 L'application se fige alors pour éviter toute interaction avec la base de données... allez boire un café ou deux.  
 
-####Editeur de langues  
+#### Editeur de langues  
 
 L'éditeur de langues permet d'éditer la correspondance entre les codes langue et l'éctiture littérale de celle-ci.  
 *Exemple: FRE -> Français*  
 
 ![](images/doc-img002.png)  
 
-####Editeur de Bibles  
+#### Editeur de Bibles  
 
 L'éditeur de Bibles permet l'édition du nom des différents livres contenu dans chaque Bible ainsi que leur diminutif.  
 L'utilisation de modèles (templates) est recommandée. Vous pouvez les créer depuis l'interface de configuration et les appliquer à une autre Bible ensuite.  
