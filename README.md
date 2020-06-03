@@ -51,4 +51,20 @@ Possibilité d'ajouter des commentaires:
 
 ## Utilisateurs
 
-Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db .  
+Sous Windows, débrouillez-vous, vous avez l'habitude.  
+Sous Linux, allez dans le répertoire destiné aux code sources. Vous devez être sous un environement graphique.  
+
+####Réalisez une copie locale de ce dépôt:  
+git clone https://github.com/cgifl300/pybible.git  
+####Ensuite allez dans pybible:  
+cd pybible  
+####Reconstituez l'environement python avec toutes ses librairies:  
+make init  
+####Lancez l'interface de configuration:  
+make setup  
+L'interface de configuration et de génération de la base de donnée derait s'ouvrir:  
+![](images/doc-img001.png)   
+Vous pouvez faire le trie des Bibles qui vous intéresse en supprimant celles qui ne vous intéresse pas dans data/xml .
+
+Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée.  
+Dans ce cas il vous suffira d'indiquer le chemin de la base de donnée sqlite en cliquant sur 'secret_garden.py'.  
