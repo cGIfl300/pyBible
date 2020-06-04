@@ -28,6 +28,7 @@ from configuration import *
 from peewee import *
 from db_model import *
 import pygame
+from class_pyBible import pyBible_Global
 
 pygame.init()
 
@@ -43,6 +44,11 @@ class pyBible(Tk):
         '''
         self.title('Titre ici')
         self.geometry('400x200')
+        app_essai = pyBible_Global()
+        print(app_essai.verset_found(1,1))
+        print(app_essai.word_found('jésus'))
+        resultats = app_essai.word_found('jésus')
+        print(f'Occurences : {len(resultats)}')
     
     def run(self):
         self.interface()

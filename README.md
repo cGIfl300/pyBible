@@ -26,7 +26,7 @@ Sauf si vous utilisez directement les scripts, il ne peut pas être utilisé apr
 
 ### (DEV) Todo Setup_GUI
 
-- Interface de lecture desktop  
+- Interface de lecture desktop - en cours -  
 
 ## (DEV) Todo pyBible
 
