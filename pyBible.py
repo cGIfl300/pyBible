@@ -45,10 +45,10 @@ class pyBible(Tk):
         self.title('Titre ici')
         self.geometry('400x200')
         app_essai = pyBible_Global()
-        print(app_essai.verset_found(1,1))
-        print(app_essai.word_found('jésus'))
-        resultats = app_essai.word_found('jésus')
-        print(f'Occurences : {len(resultats)}')
+        print(app_essai.verset_found(1,1,1))
+        print(app_essai.word_found('jésus')) #BUG!!
+        #resultats = app_essai.word_found('jésus')
+        #print(f'Occurences : {len(resultats)}')
     
     def run(self):
         self.interface()

@@ -37,6 +37,7 @@ class pyBible_Global():
     def word_found(self, word):
         ''' Recherche un mot dans la Bible active
         '''
+        #BUG!!!
         start_time = time.time()
         compteur = 0
         word = word.upper()
@@ -51,11 +52,11 @@ class pyBible_Global():
             pass
         return resultats
     
-    def verset_found(self, chapitre, verset):
+    def verset_found(self, book, chapitre, verset):
         ''' Recherche d'un verset
         '''
         try:
-            record = Versets.get(Versets.ID_Bible == Bibles.select().where(Bibles.titre == self.traduction, Bibles.langue == self.langue), Versets.N_Chapitre == chapitre, Versets.N_Verset == verset)
+            record = Versets.get(Versets.ID_Bible == Bibles.get(Bibles.langue == self.langue, Bibles.titre == self.traduction), Versets.ID_Livre == Livres.get(Livres.ID_Bible == Bibles.get(Bibles.langue == self.langue, Bibles.titre == self.traduction), Livres.N_Livres == book), Versets.N_Chapitre == chapitre, Versets.N_Verset == verset)
         except:
             return 0
         resultat = record.Texte
