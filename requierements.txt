@@ -6,6 +6,7 @@ beautifulsoup4==4.9.0
 buildozer==1.2.0
 certifi==2020.4.5.1
 chardet==3.0.4
+colorama==0.4.3
 decorator==4.4.2
 distlib==0.3.0
 docutils==0.16
@@ -20,6 +21,7 @@ Kivy-Garden==0.1.4
 MarkupSafe==1.1.1
 packaging==20.3
 peewee==3.13.2
+pep517==0.6.0
 pexpect==4.8.0
 Pillow==7.1.1
 pkg-resources==0.0.0
@@ -27,6 +29,8 @@ ptyprocess==0.6.0
 pygame==1.9.6
 Pygments==2.6.1
 pyparsing==2.4.7
+python-for-android==2020.6.2
+pytoml==0.1.21
 pytz==2019.3
 requests==2.23.0
 sh==1.13.1
@@ -41,6 +45,7 @@ sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.4
 tk==0.1.0
+toml==0.10.1
 urllib3==1.25.8
 virtualenv==20.0.21
 waitress==1.4.3

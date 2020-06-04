@@ -22,6 +22,14 @@
 
 from tkinter import *
 from tkinter.ttk import *
+from creer_bouton import creer_bouton
+from image_set import image_set
+from configuration import *
+from peewee import *
+from db_model import *
+import pygame
+
+pygame.init()
 
 class pyBible(Tk):
     ''' Interface graphique ...
@@ -41,6 +49,6 @@ class pyBible(Tk):
         self.mainloop()
 
 if __name__ == '__main__':
-    App = pyBible()
+    App = pyBible(debug = True)
     App.after(30000, App.destroy)
     App.run()
