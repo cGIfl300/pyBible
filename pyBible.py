@@ -45,15 +45,19 @@ class pyBible(Tk):
         '''
         self.title('pyBible')
         self.panel_menu = Canvas(self, bg = couleur_fond)
+        self.panel_selection = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
         self.panel_menu_bas = Canvas(self, bg = couleur_fond)
         
         self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
         self.menu_rechercher_mot = creer_autobutton(self.panel_menu, texte = 'Rechercher')
-        self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Configurer')
         
         self.menu_precedent = creer_autobutton(self.panel_menu_bas, texte = '<')
         self.menu_suivant = creer_autobutton(self.panel_menu_bas, texte = '>')
+        
+        nom_complet = f'{self.magic_system.traduction}\n{self.magic_system.bookname}'
+        
+        self.menu_selection = creer_autobutton(self.panel_selection, texte = nom_complet)
         
         self.SCROLL_001 = Scrollbar(self.panel_contenu,
                                     bg = couleur_fond,
@@ -70,6 +74,8 @@ class pyBible(Tk):
         '''
         self.panel_menu.pack(fill = BOTH,
                              expand = True)
+        self.panel_selection.pack(fill = BOTH,
+                                  expand = True)
         self.panel_contenu.pack(fill = BOTH,
                                 expand = True)
         self.panel_menu_bas.pack(fill = BOTH,
@@ -78,7 +84,7 @@ class pyBible(Tk):
                              fill = Y)
         self.contenu.pack(fill = BOTH,
                           expand = True)
-        self.do_a_try()
+        self.nouveau_chapitre(1, 1)
 
     def do_a_try(self):
         ''' Testing code
@@ -89,8 +95,12 @@ class pyBible(Tk):
         resultats = app_essai.word_found('dieu')
         print(f'Occurences : {len(resultats)}')
         print(resultats)
+        
+    def nouveau_chapitre(self, book, chapitre):
+        ''' Affiche un chapitre
+        '''
         self.contenu.config(state = NORMAL)
-        test = self.magic_system.chapitre_found(book = 1, chapitre = 1)
+        test = self.magic_system.chapitre_found(book = book, chapitre = chapitre)
         test2 = ''
         for l in test:
             test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {l[3]}\n'
