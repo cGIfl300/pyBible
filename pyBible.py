@@ -109,12 +109,20 @@ class pyBible(Tk):
     def do_MenuSuivant(self, event):
         if self.chapitre < self.max_chapitre():
             self.chapitre += 1
-            self.nouveau_chapitre(self.book, self.chapitre)
+        else:
+            if self.book < 66:
+                self.book += 1
+                self.chapitre = 1
+        self.nouveau_chapitre(self.book, self.chapitre)
             
     def do_MenuPrecedent(self, event):
         if self.chapitre > 1:
             self.chapitre -= 1
-            self.nouveau_chapitre(self.book, self.chapitre)
+        else:
+            if self.book > 1:
+                self.book -= 1
+                self.chapitre = self.max_chapitre()
+        self.nouveau_chapitre(self.book, self.chapitre)
     
     def max_chapitre(self):
         total = 0
