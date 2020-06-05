@@ -46,12 +46,17 @@ class pyBible(Tk):
         self.title('pyBible')
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
+        self.panel_menu_bas = Canvas(self, bg = couleur_fond)
         
         self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
         self.menu_rechercher_mot = creer_autobutton(self.panel_menu, texte = 'Rechercher')
         self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Configurer')
         
+        self.menu_precedent = creer_autobutton(self.panel_menu_bas, texte = '<')
+        self.menu_suivant = creer_autobutton(self.panel_menu_bas, texte = '>')
+        
         self.SCROLL_001 = Scrollbar(self.panel_contenu,
+                                    bg = couleur_fond,
                                     orient = VERTICAL)
         self.contenu = Text(self.panel_contenu,
                             bg = couleur_fond,
@@ -59,11 +64,6 @@ class pyBible(Tk):
                             yscrollcommand = self.SCROLL_001.set)
         
         self.SCROLL_001.config(command = self.contenu.yview)
-        test = self.magic_system.chapitre_found(book = 1, chapitre = 1)
-        test2 = ''
-        for l in test:
-            test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {l[3]}\n'
-        self.contenu.insert('0.0', test2)
         self.contenu.config(state = DISABLED)
         
         ''' Implantation des composants
@@ -72,10 +72,14 @@ class pyBible(Tk):
                              expand = True)
         self.panel_contenu.pack(fill = BOTH,
                                 expand = True)
+        self.panel_menu_bas.pack(fill = BOTH,
+                                 expand = True)
         self.SCROLL_001.pack(side = RIGHT,
                              fill = Y)
         self.contenu.pack(fill = BOTH,
                           expand = True)
+        self.do_a_try()
+
     def do_a_try(self):
         ''' Testing code
         '''
@@ -85,6 +89,13 @@ class pyBible(Tk):
         resultats = app_essai.word_found('dieu')
         print(f'Occurences : {len(resultats)}')
         print(resultats)
+        self.contenu.config(state = NORMAL)
+        test = self.magic_system.chapitre_found(book = 1, chapitre = 1)
+        test2 = ''
+        for l in test:
+            test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {l[3]}\n'
+        self.contenu.insert('0.0', test2)
+        self.contenu.config(state = DISABLED)
     
     def run(self):
         self.interface()
