@@ -42,7 +42,7 @@ class pyBible_Global():
         l = Livres.get(Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Livres.N_Livres == book)
         for v in Versets.select().where(Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Versets.ID_Livre == l, Versets.N_Chapitre == chapitre):
             resultats.append([l.N_Livres, v.N_Chapitre, v.N_Verset, v.Texte])
-            self.bookname = str(l.Nom_Livre)
+            self.bookname = l.Nom_Livre
         return resultats
     
     def word_found(self, word):

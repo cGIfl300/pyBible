@@ -106,6 +106,8 @@ class pyBible(Tk):
             test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {l[3]}\n'
         self.contenu.insert('0.0', test2)
         self.contenu.config(state = DISABLED)
+        nom_complet = f'{self.magic_system.traduction}\n{self.magic_system.bookname.upper()}'
+        self.menu_selection.btn.config(text = nom_complet)
     
     def run(self):
         self.interface()
