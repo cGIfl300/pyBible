@@ -34,11 +34,18 @@ class pyBible_Global():
     def run(self):
         pass
     
+    def chapitre_found(self, book, chapitre):
+        ''' Retourne tous les versets d'un chapitre
+        '''
+        resultats = []
+        l = Livres.get(Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Livres.N_Livres == book)
+        for v in Versets.select().where(Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Versets.ID_Livre == l, Versets.N_Chapitre == chapitre):
+            resultats.append([l.N_Livres, v.N_Chapitre, v.N_Verset, v.Texte])
+        return resultats
+    
     def word_found(self, word):
         ''' Recherche un mot dans la Bible active
         '''
-        start_time = time.time()
-        compteur = 0
         word = word.upper()
         resultats = []
         for l in Livres.select().where(Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue)):
@@ -47,7 +54,6 @@ class pyBible_Global():
                 verset = verset.upper()
                 if verset.find(word) > 0:
                     resultats.append([l.N_Livres, v.N_Chapitre, v.N_Verset])
-                    compteur += 1
                 pass
         return resultats
     

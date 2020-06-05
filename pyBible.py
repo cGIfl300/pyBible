@@ -59,10 +59,10 @@ class pyBible(Tk):
                             yscrollcommand = self.SCROLL_001.set)
         
         self.SCROLL_001.config(command = self.contenu.yview)
-        test = self.magic_system.word_found('ruth')
+        test = self.magic_system.chapitre_found(book = 1, chapitre = 1)
         test2 = ''
         for l in test:
-            test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {self.magic_system.verset_found(l[0], l[1], l[2])}\n'
+            test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {l[3]}\n'
         self.contenu.insert('0.0', test2)
         self.contenu.config(state = DISABLED)
         
