@@ -125,7 +125,6 @@ class pyBible(Tk):
             if ancien_chapitre != liste.N_Chapitre:
                 total += 1
                 ancien_chapitre = liste.N_Chapitre
-        print(total)
         return total
 
     def nouveau_chapitre(self, book, chapitre):
