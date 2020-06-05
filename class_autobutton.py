@@ -31,7 +31,8 @@ class creer_autobutton():
     menu1 = creer_bouton(w, couleur_fond, couleur_texte)
     menu1.btn.bind("<Button-1>", do_mafonction)
     '''
-    def __init__(self, master, couleur_fond = couleur_fond, couleur_texte = couleur_texte, bordure = 1, texte = '', cote = LEFT):
+    def __init__(self, master, couleur_fond = couleur_fond, couleur_texte = couleur_texte,
+                 bordure = 1, texte = '', cote = LEFT):
         self.master = master
         self.couleur_fond = couleur_fond
         self.couleur_texte = couleur_texte
@@ -48,7 +49,9 @@ class creer_autobutton():
                       fill = BOTH,
                       padx = bordure,
                       pady = bordure)
-        self.labelfond.pack(fill = BOTH, expand = True, side = cote)
+        self.labelfond.pack(fill = BOTH,
+                            expand = True,
+                            side = cote)
         
         self.labelfond.bind("<Enter>", self.do_btn_over)
         self.labelfond.bind("<Leave>", self.do_btn_leave)

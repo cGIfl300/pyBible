@@ -50,7 +50,7 @@ class pyBible(Tk):
         
         ''' Implantation des composants
         '''
-        self.panel_menu.pack(fill = X,
+        self.panel_menu.pack(fill = BOTH,
                              expand = True)
     def do_a_try(self):
         ''' Testing code
