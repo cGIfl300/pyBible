@@ -21,7 +21,6 @@
 # THE SOFTWARE.
 
 from tkinter import *
-from tkinter.ttk import *
 from creer_bouton import creer_bouton
 from image_set import image_set
 from configuration import *
@@ -29,6 +28,7 @@ from peewee import *
 from db_model import *
 import pygame
 from class_pyBible import pyBible_Global
+from class_autobutton import creer_autobutton
 
 pygame.init()
 
@@ -42,13 +42,28 @@ class pyBible(Tk):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Titre ici')
-        self.geometry('400x200')
+        self.title('pyBible')
+        self.panel_menu = Label(self, bg = couleur_fond)
+        self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
+        self.menu_rechercher_mot = creer_autobutton(self.panel_menu, texte = 'Rechercher')
+        self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Configurer')
+        self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Discuter\nen\nligne')
+        
+        
+        
+        ''' Implantation des composants
+        '''
+        self.panel_menu.pack(fill = X,
+                             expand = True)
+    def do_a_try(self):
+        ''' Testing code
+        '''
         app_essai = pyBible_Global()
         print(app_essai.verset_found(1,1,1))
-        print(app_essai.word_found('jésus'))
-        resultats = app_essai.word_found('jésus')
+        print(app_essai.word_found('dieu'))
+        resultats = app_essai.word_found('dieu')
         print(f'Occurences : {len(resultats)}')
+        print(resultats)
     
     def run(self):
         self.interface()
@@ -56,5 +71,4 @@ class pyBible(Tk):
 
 if __name__ == '__main__':
     App = pyBible(debug = True)
-    App.after(30000, App.destroy)
     App.run()
