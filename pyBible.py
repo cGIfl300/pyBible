@@ -38,7 +38,11 @@ class pyBible(Tk):
     def __init__(self, debug = False):
         Tk.__init__(self)
         self.debug = debug
+        self.langue = 'FRE'
+        self.traduction = 'French Louis Segond'
         self.magic_system = pyBible_Global()
+        self.book = 1
+        self.chapitre = 1
     
     def interface(self):
         ''' Interface de la fenêtre
@@ -84,8 +88,14 @@ class pyBible(Tk):
                              fill = Y)
         self.contenu.pack(fill = BOTH,
                           expand = True)
+        
         self.nouveau_chapitre(1, 1)
-
+        
+        ''' Binding
+        '''
+        self.menu_suivant.btn.bind("<Button-1>", self.do_MenuSuivant)
+        self.menu_precedent.btn.bind("<Button-1>", self.do_MenuPrecedent)
+        
     def do_a_try(self):
         ''' Testing code
         '''
@@ -96,15 +106,38 @@ class pyBible(Tk):
         print(f'Occurences : {len(resultats)}')
         print(resultats)
         
+    def do_MenuSuivant(self, event):
+        if self.chapitre < self.max_chapitre():
+            self.chapitre += 1
+            self.nouveau_chapitre(self.book, self.chapitre)
+            
+    def do_MenuPrecedent(self, event):
+        if self.chapitre > 1:
+            self.chapitre -= 1
+            self.nouveau_chapitre(self.book, self.chapitre)
+    
+    def max_chapitre(self):
+        total = 0
+        l = Livres.get(Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Livres.N_Livres == self.book)
+        v = Versets.select().where(Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Versets.ID_Livre == l)
+        ancien_chapitre = ''
+        for liste in v:
+            if ancien_chapitre != liste.N_Chapitre:
+                total += 1
+                ancien_chapitre = liste.N_Chapitre
+        print(total)
+        return total
+
     def nouveau_chapitre(self, book, chapitre):
         ''' Affiche un chapitre
         '''
         self.contenu.config(state = NORMAL)
-        test = self.magic_system.chapitre_found(book = book, chapitre = chapitre)
-        test2 = ''
-        for l in test:
-            test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {l[3]}\n'
-        self.contenu.insert('0.0', test2)
+        self.contenu.delete('0.0', 'end')
+        temporaire = self.magic_system.chapitre_found(book = book, chapitre = chapitre)
+        temporaire2 = ''
+        for l in temporaire:
+            temporaire2 = temporaire2 + f'{l[1]}:{l[2]} - {l[3]}\n'
+        self.contenu.insert('0.0', temporaire2)
         self.contenu.config(state = DISABLED)
         nom_complet = f'{self.magic_system.traduction}\n{self.magic_system.bookname.upper()}'
         self.menu_selection.btn.config(text = nom_complet)
