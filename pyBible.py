@@ -47,7 +47,6 @@ class pyBible(Tk):
         self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
         self.menu_rechercher_mot = creer_autobutton(self.panel_menu, texte = 'Rechercher')
         self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Configurer')
-        self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Discuter\nen\nligne')
         
         ''' Implantation des composants
         '''
