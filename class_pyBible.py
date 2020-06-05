@@ -47,7 +47,6 @@ class pyBible_Global():
                 verset = verset.upper()
                 if verset.find(word) > 0:
                     resultats.append([l.N_Livres, v.N_Chapitre, v.N_Verset])
-                    print(v.Texte)
                     compteur += 1
                 pass
         return resultats

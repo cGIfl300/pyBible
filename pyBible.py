@@ -38,20 +38,44 @@ class pyBible(Tk):
     def __init__(self, debug = False):
         Tk.__init__(self)
         self.debug = debug
+        self.magic_system = pyBible_Global()
     
     def interface(self):
         ''' Interface de la fenêtre
         '''
         self.title('pyBible')
-        self.panel_menu = Label(self, bg = couleur_fond)
+        self.panel_menu = Canvas(self, bg = couleur_fond)
+        self.panel_contenu = Canvas(self, bg = couleur_fond)
+        
         self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
         self.menu_rechercher_mot = creer_autobutton(self.panel_menu, texte = 'Rechercher')
         self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Configurer')
+        
+        self.SCROLL_001 = Scrollbar(self.panel_contenu,
+                                    orient = VERTICAL)
+        self.contenu = Text(self.panel_contenu,
+                            bg = couleur_fond,
+                            fg = couleur_texte,
+                            yscrollcommand = self.SCROLL_001.set)
+        
+        self.SCROLL_001.config(command = self.contenu.yview)
+        test = self.magic_system.word_found('ruth')
+        test2 = ''
+        for l in test:
+            test2 = test2 + f'{l[0]} {l[1]} {l[2]} - {self.magic_system.verset_found(l[0], l[1], l[2])}\n'
+        self.contenu.insert('0.0', test2)
+        self.contenu.config(state = DISABLED)
         
         ''' Implantation des composants
         '''
         self.panel_menu.pack(fill = BOTH,
                              expand = True)
+        self.panel_contenu.pack(fill = BOTH,
+                                expand = True)
+        self.SCROLL_001.pack(side = RIGHT,
+                             fill = Y)
+        self.contenu.pack(fill = BOTH,
+                          expand = True)
     def do_a_try(self):
         ''' Testing code
         '''
