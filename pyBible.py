@@ -69,6 +69,7 @@ class pyBible(Tk):
         self.contenu = Text(self.panel_contenu,
                             bg = couleur_fond,
                             fg = couleur_texte,
+                            wrap = WORD,
                             yscrollcommand = self.SCROLL_001.set)
         
         self.SCROLL_001.config(command = self.contenu.yview)
