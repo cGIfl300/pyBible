@@ -96,6 +96,7 @@ class pyBible(Tk):
         '''
         self.menu_suivant.btn.bind("<Button-1>", self.do_MenuSuivant)
         self.menu_precedent.btn.bind("<Button-1>", self.do_MenuPrecedent)
+        self.menu_selection.btn.bind("<Button-1>", self.do_SelectionTraduction)
         
     def do_a_try(self):
         ''' Testing code
@@ -106,6 +107,12 @@ class pyBible(Tk):
         resultats = app_essai.word_found('dieu')
         print(f'Occurences : {len(resultats)}')
         print(resultats)
+        
+    def do_SelectionTraduction(self, event):
+        ''' Sélection d'une nouvelle traduction et / ou chapitre
+        '''
+        # Création de la class toplevel avec stay over
+        pass
         
     def do_MenuSuivant(self, event):
         if self.chapitre < self.max_chapitre():
