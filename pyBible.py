@@ -49,8 +49,6 @@ class pyBible(Tk):
         self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Configurer')
         self.menu_configurer = creer_autobutton(self.panel_menu, texte = 'Discuter\nen\nligne')
         
-        
-        
         ''' Implantation des composants
         '''
         self.panel_menu.pack(fill = X,
