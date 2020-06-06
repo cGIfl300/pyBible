@@ -61,7 +61,7 @@ class pyBible(Tk):
         self.menu_suivant = creer_autobutton(self.panel_menu_bas, texte = '>')
         
         nom_complet = f'{self.magic_system.traduction}\n{self.magic_system.bookname}'
-        
+
         self.menu_selection = creer_autobutton(self.panel_selection, texte = nom_complet)
         
         self.SCROLL_001 = Scrollbar(self.panel_contenu,
@@ -146,7 +146,7 @@ class pyBible(Tk):
             temporaire2 = temporaire2 + f'{l[1]}:{l[2]} - {l[3]}\n'
         self.contenu.insert('0.0', temporaire2)
         self.contenu.config(state = DISABLED)
-        nom_complet = f'{self.magic_system.traduction}\n{self.magic_system.bookname.upper()}'
+        nom_complet = f'{self.traduction}\n{self.magic_system.bookname.upper()}'
         self.menu_selection.btn.config(text = nom_complet)
     
     def run(self):
