@@ -29,6 +29,7 @@ from db_model import *
 import pygame
 from class_pyBible import pyBible_Global
 from class_autobutton import creer_autobutton
+from app_selecttranslation import SelectTranslation
 
 pygame.init()
 
@@ -98,20 +99,11 @@ class pyBible(Tk):
         self.menu_precedent.btn.bind("<Button-1>", self.do_MenuPrecedent)
         self.menu_selection.btn.bind("<Button-1>", self.do_SelectionTraduction)
         
-    def do_a_try(self):
-        ''' Testing code
-        '''
-        app_essai = pyBible_Global()
-        print(app_essai.verset_found(1,1,1))
-        print(app_essai.word_found('dieu'))
-        resultats = app_essai.word_found('dieu')
-        print(f'Occurences : {len(resultats)}')
-        print(resultats)
-        
     def do_SelectionTraduction(self, event):
         ''' Sélection d'une nouvelle traduction et / ou chapitre
         '''
-        # Création de la class toplevel avec stay over
+        app = SelectTranslation(self)
+        app.run()
         pass
         
     def do_MenuSuivant(self, event):
