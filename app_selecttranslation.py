@@ -157,6 +157,9 @@ class SelectTranslation(Toplevel):
         self.master.traduction = self.Traduction
         self.master.book = int(self.book)
         self.master.chapitre = int(self.chapitre)
+        self.master.magic_system.langue = self.Code_Langue
+        self.master.magic_system.traduction = self.Traduction
+        self.master.magic_system.chapitre_found(int(self.book), int(self.chapitre))
         self.master.nouveau_chapitre(self.master.book, self.master.chapitre)
         self.destroy()
         
