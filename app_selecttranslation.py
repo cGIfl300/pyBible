@@ -213,7 +213,10 @@ class SelectTranslation(Toplevel):
             return 0
         total = 0
         self.LSTChapitres.delete('0', 'end')
-        l = Livres.get(Livres.ID_Bible == Bibles.get(Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue), Livres.N_Livres == self.book)
+        try:
+            l = Livres.get(Livres.ID_Bible == Bibles.get(Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue), Livres.N_Livres == self.book)
+        except:
+            return 0
         v = Versets.select().where(Versets.ID_Bible == Bibles.get(Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue), Versets.ID_Livre == l)
         ancien_chapitre = ''
         self.TableauChapitres = []
