@@ -50,6 +50,12 @@ Possibilité d'ajouter des commentaires:
 - Verset (par défaut)
 - Possibilité de suivre un plan de lecture en fonction de la date actuelle (fêtes et évènements spéciaux inclus)
 
+### Création d'un site internet
+
+- Création d'un site internet pour le peojet.  
+- Portage sous Windows  
+- Portage sous Android  
+
 ## Utilisateurs
 
 Sous Windows, débrouillez-vous, vous avez l'habitude.  
