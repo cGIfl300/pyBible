@@ -107,7 +107,7 @@ class pyBible(Tk):
         app = SelectTranslation(self)
         app.run()
 
-    def do_MenuRechercher(self):
+    def do_MenuRechercher(self, event):
         ''' Recherche d'un mot ou d'une phrase
         '''
         app = AppRechercher(langue = self.langue, traduction = self.traduction)
