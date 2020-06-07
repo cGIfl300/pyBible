@@ -26,28 +26,29 @@ Sauf si vous utilisez directement les scripts, il ne peut pas être utilisé apr
 
 ### (DEV) Todo Setup_GUI
 
-- Interface de lecture desktop - en cours -  
+- Gestion des bookmarks - en cours -
 
 ## (DEV) Todo pyBible
 
 ### Lecture d'une Bible
 
-- Pouvoir lire une Bible.  
 - Sélection d'une Bible par défaut.  
-- Limiter les recherches à une langue spécifique.  
+- Reprendre la lecture là où on l'avais laissée.  
 
 #### Marque pages
 
-- Ouverture d'une Bible à la dernière page choisie par l'utilisateur (lecture continue).  
 - Gestion d'un carnet de marque page (avec nomage de chaque marque page).  
 
 #### Commentaires
+
+Cette section reflète les idées en l'air pour une évolution future...  
 
 Possibilité d'ajouter des commentaires:  
 - Bible
 - Livre
 - Chapitre
 - Verset (par défaut)
+- Possibilité de suivre un plan de lecture en fonction de la date actuelle (fêtes et évènements spéciaux inclus)
 
 ## Utilisateurs
 
