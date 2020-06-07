@@ -45,7 +45,6 @@ class AppRechercher(Toplevel):
         ''' Interface de la fenêtre
         '''
         self.title('Rechercher')
-        self.geometry('400x200')
         
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
