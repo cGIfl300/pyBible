@@ -59,3 +59,18 @@ Référence API
    
 .. automodule:: app_edit_bibles
    :members:
+
+.. automodule:: app_applytemplate
+   :members:
+   
+.. automodule:: app_selecttranslation
+   :members:
+   
+.. automodule:: class_autobutton
+   :members:
+   
+.. automodule:: class_pyBible
+   :members:
+   
+.. automodule:: pyBible
+   :members:
