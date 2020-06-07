@@ -39,6 +39,7 @@ class AppRechercher(Toplevel):
         self.traduction = traduction
         self.book = book
         self.chapitre = chapitre
+        self.moteur = pyBible_Global(langue = self.langue, traduction = self.traduction)
     
     def interface(self):
         ''' Interface de la fenêtre
@@ -55,9 +56,10 @@ class AppRechercher(Toplevel):
     def do_Recherche(self, phrase):
         ''' Recherche d'un mot ou d'une phrase dans la traduction active
         '''
-        moteur = pyBible_Global(langue = self.langue, traduction = self.traduction)
-        résultats = moteur.verset_found(phrase)
-        moteur.destroy()
+        résultats = self.moteur.word_found(phrase)
+        if self.debug:
+            print(f'Il y a {len(résultats)} résultats.')
+            print(résultats)
     
     def run(self):
         self.interface()
