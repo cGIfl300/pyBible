@@ -88,6 +88,7 @@ class AppRechercher(Toplevel):
         '''
         phrase = self.entry_recherche.get()
         résultats = self.moteur.word_found(phrase)
+        self.entry_recherche.config(state = DISABLED)
         if self.debug:
             print(f'Il y a {len(résultats)} résultats.')
             print(résultats)
@@ -108,6 +109,7 @@ class AppRechercher(Toplevel):
             temporaire = temporaire + f'{l[1]}:{l[2]} - {verset}\n' 
         self.contenu.insert('0.0', temporaire)
         self.contenu.config(state = DISABLED)
+        self.entry_recherche.config(state = NORMAL)
     
     def run(self):
         self.interface()
