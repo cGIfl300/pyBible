@@ -47,26 +47,74 @@ class AppRechercher(Toplevel):
         self.title('Rechercher')
         self.geometry('400x200')
         
+        self.panel_menu = Canvas(self, bg = couleur_fond)
+        self.panel_contenu = Canvas(self, bg = couleur_fond)
+        
+        self.SCROLL_001 = Scrollbar(self.panel_contenu,
+                                    bg = couleur_fond,
+                                    orient = VERTICAL)
+        self.contenu = Text(self.panel_contenu,
+                            bg = couleur_fond,
+                            fg = couleur_texte,
+                            wrap = WORD,
+                            yscrollcommand = self.SCROLL_001.set)
+        self.SCROLL_001.config(command = self.contenu.yview)
+        self.contenu.config(state = DISABLED)
+        self.entry_recherche = Entry(self.panel_menu,
+                                bg = couleur_fond_saisie,
+                                fg = couleur_texte_saisie,
+                                relief = 'flat')
+        
         ''' Implantation des composants
         '''
         
+        self.panel_menu.pack(fill = BOTH,
+                             expand = True)
+        self.entry_recherche.pack(fill = BOTH,
+                              expand = True)
+        self.panel_contenu.pack(fill = BOTH,
+                                expand = True)
+        self.SCROLL_001.pack(side = RIGHT,
+                             fill = Y)
+        self.contenu.pack(fill = BOTH,
+                          expand = True)
+        
         ''' Binding
         '''
+        self.entry_recherche.bind('<Return>', self.do_Recherche)
     
-    def do_Recherche(self, phrase):
+    def do_Recherche(self, event):
         ''' Recherche d'un mot ou d'une phrase dans la traduction active
         '''
+        phrase = self.entry_recherche.get()
         résultats = self.moteur.word_found(phrase)
         if self.debug:
             print(f'Il y a {len(résultats)} résultats.')
             print(résultats)
+        self.contenu.config(state = NORMAL)
+        self.contenu.delete('0.0', 'end')
+        temporaire = f'{len(résultats)} résultats.\n\n'
+        ancien_nom_livre = ''
+        for l in résultats:
+            verset = self.moteur.verset_found(l[0], l[1], l[2])
+            nom_livre = self.moteur.chapitre_found(l[0], l[1])
+            nom_livre = self.moteur.bookname
+            if ancien_nom_livre != nom_livre:
+                if ancien_nom_livre == '':
+                    temporaire = temporaire + f'{nom_livre.upper()}\n\n'
+                else:
+                    temporaire = temporaire + f'\n{nom_livre.upper()}\n\n'
+                ancien_nom_livre = nom_livre
+            temporaire = temporaire + f'{l[1]}:{l[2]} - {verset}\n' 
+        self.contenu.insert('0.0', temporaire)
+        self.contenu.config(state = DISABLED)
     
     def run(self):
         self.interface()
 
 if __name__ == '__main__':
     w = Tk()
-    w.after(30000, w.destroy)
+    w.after(60000, w.destroy)
     w.wm_state('icon')
     App = AppRechercher(debug = True, langue = 'FRE', traduction = 'French Louis Segond')
     App.run()
