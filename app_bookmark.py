@@ -26,6 +26,7 @@ from db_model import *
 import pygame
 from configuration import *
 from class_autobutton import creer_autobutton
+from image_set import image_set
 
 class AppBookmark(Toplevel):
     ''' Interface graphique ...
@@ -42,7 +43,7 @@ class AppBookmark(Toplevel):
         ''' Interface de la fenêtre
         '''
         self.title('Marque Pages')
-        self.geometry('400x200')
+        self.geometry('400x550')
         
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
@@ -69,6 +70,7 @@ class AppBookmark(Toplevel):
                          expand = True)
         self.panel_contenu.pack(fill = BOTH,
                          expand = True)
+        self.decoration = image_set(self.panel_contenu, image_locale = 'images/vertical_spacer')
         self.LSTBookmarks.pack(fill = BOTH,
                          expand = True,
                          side = LEFT)
