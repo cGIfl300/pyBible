@@ -23,4 +23,3 @@ pycache:
 doc:
 	@echo "Generating documentation"
 	venv/bin/sphinx-build -M html doc/source doc/build
-	doc/make html
