@@ -30,6 +30,7 @@ import pygame
 from class_pyBible import pyBible_Global
 from class_autobutton import creer_autobutton
 from app_selecttranslation import SelectTranslation
+from app_rechercher import AppRechercher
 
 pygame.init()
 
@@ -55,7 +56,7 @@ class pyBible(Tk):
         self.panel_menu_bas = Canvas(self, bg = couleur_fond)
         
         self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
-        self.menu_rechercher_mot = creer_autobutton(self.panel_menu, texte = 'Rechercher')
+        self.menu_rechercher = creer_autobutton(self.panel_menu, texte = 'Rechercher')
         
         self.menu_precedent = creer_autobutton(self.panel_menu_bas, texte = '<')
         self.menu_suivant = creer_autobutton(self.panel_menu_bas, texte = '>')
@@ -95,16 +96,22 @@ class pyBible(Tk):
         
         ''' Binding
         '''
-        self.menu_suivant.btn.bind("<Button-1>", self.do_MenuSuivant)
-        self.menu_precedent.btn.bind("<Button-1>", self.do_MenuPrecedent)
-        self.menu_selection.btn.bind("<Button-1>", self.do_SelectionTraduction)
+        self.menu_suivant.btn.bind('<Button-1>', self.do_MenuSuivant)
+        self.menu_precedent.btn.bind('<Button-1>', self.do_MenuPrecedent)
+        self.menu_selection.btn.bind('<Button-1>', self.do_SelectionTraduction)
+        self.menu_rechercher.btn.bind('<Button-1>', self.do_MenuRechercher)
         
     def do_SelectionTraduction(self, event):
         ''' Sélection d'une nouvelle traduction et / ou chapitre
         '''
         app = SelectTranslation(self)
         app.run()
-        pass
+
+    def do_MenuRechercher(self):
+        ''' Recherche d'un mot ou d'une phrase
+        '''
+        app = AppRechercher(langue = self.langue, traduction = self.traduction)
+        app.run()
         
     def do_MenuSuivant(self, event):
         if self.chapitre < self.max_chapitre():
