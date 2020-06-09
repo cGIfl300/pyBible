@@ -6,18 +6,28 @@
 Bienvenue dans la documentation de pyBible!
 ===========================================
 
+|logo|
+
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-
+   
+   
 
 Table des matières
 ==================
 
+* `Site du projet`__
+* Documentation Installation
+* Documentation Utilisateur
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. _projet: https://www.blueroses.fr/pybible/
+__ projet_
 
 
 
@@ -74,3 +84,5 @@ Référence API
    
 .. automodule:: pyBible
    :members:
+   
+.. |logo| image:: _static/logo-small.png
