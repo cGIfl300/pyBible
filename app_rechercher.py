@@ -81,6 +81,7 @@ class AppRechercher(Toplevel):
         ''' Binding
         '''
         self.entry_recherche.bind('<Return>', self.do_Recherche)
+        self.entry_recherche.bind('<KP_Enter>', self.do_Recherche)
     
     def do_Recherche(self, event):
         ''' Recherche d'un mot ou d'une phrase dans la traduction active
