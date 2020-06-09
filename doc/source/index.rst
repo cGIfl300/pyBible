@@ -85,4 +85,10 @@ Référence API
 .. automodule:: pyBible
    :members:
    
+.. automodule:: app_bookmark
+   :members:
+
+.. automodule:: app_rechercher
+   :members:
+   
 .. |logo| image:: _static/logo-small.png
