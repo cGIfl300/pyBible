@@ -43,7 +43,6 @@ class AppBookmark(Toplevel):
         ''' Interface de la fenêtre
         '''
         self.title('Marque Pages')
-        self.geometry('400x550')
         
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
