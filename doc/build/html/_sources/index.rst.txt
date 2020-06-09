@@ -2,6 +2,7 @@
    sphinx-quickstart on Thu Mar 12 18:29:57 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+   
 =========================
 Documentation de pyBible!
 =========================
@@ -33,55 +34,55 @@ __ projet_
 Référence API
 =============
 
-.. autoclass:: Setup_GUI
+.. automodule:: Setup_GUI
    :members:
 
-.. autoclass:: configuration
+.. automodule:: configuration
    :members:
 
-.. autoclass:: creer_bouton
+.. automodule:: creer_bouton
    :members:
 
-.. autoclass:: acquiert_bible
+.. automodule:: acquiert_bible
    :members:
 
-.. autoclass:: db_creation
+.. automodule:: db_creation
    :members:
 
-.. autoclass:: secret_garden
+.. automodule:: secret_garden
    :members:
 
-.. autoclass:: db_model
+.. automodule:: db_model
    :members:
 
-.. autoclass:: app_secret_garden
+.. automodule:: app_secret_garden
    :members:
    
-.. autoclass:: app_config_sqlite
+.. automodule:: app_config_sqlite
    :members:
    
-.. autoclass:: app_config_mysql
+.. automodule:: app_config_mysql
    :members:
 
-.. autoclass:: configuration_langues
+.. automodule:: configuration_langues
    :members:
    
-.. autoclass:: app_edit_bibles
+.. automodule:: app_edit_bibles
    :members:
 
-.. autoclass:: app_applytemplate
+.. automodule:: app_applytemplate
    :members:
    
-.. autoclass:: app_selecttranslation
+.. automodule:: app_selecttranslation
    :members:
    
-.. autoclass:: class_autobutton
+.. automodule:: class_autobutton
    :members:
    
-.. autoclass:: class_pyBible
+.. automodule:: class_pyBible
    :members:
    
-.. autoclass:: pyBible
+.. automodule:: pyBible
    :members:
    
 .. |logo| image:: _static/logo-small.png
