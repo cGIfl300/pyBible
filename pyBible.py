@@ -31,6 +31,7 @@ from class_pyBible import pyBible_Global
 from class_autobutton import creer_autobutton
 from app_selecttranslation import SelectTranslation
 from app_rechercher import AppRechercher
+from app_bookmark import AppBookmark
 
 pygame.init()
 
@@ -100,6 +101,11 @@ class pyBible(Tk):
         self.menu_precedent.btn.bind('<Button-1>', self.do_MenuPrecedent)
         self.menu_selection.btn.bind('<Button-1>', self.do_SelectionTraduction)
         self.menu_rechercher.btn.bind('<Button-1>', self.do_MenuRechercher)
+        self.menu_marque_pages.btn.bind('<Button-1>', self.do_bookmark)
+
+    def do_bookmark(self, event):
+        app = AppBookmark(master = self, chapitre = self.chapitre, book = self.book)
+        app.run()
         
     def do_SelectionTraduction(self, event):
         ''' Sélection d'une nouvelle traduction et / ou chapitre

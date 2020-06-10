@@ -31,13 +31,14 @@ from image_set import image_set
 class AppBookmark(Toplevel):
     ''' Interface graphique ...
     '''
-    def __init__(self, debug = False, langue = 'FRE', traduction = 'French Louis Segond', book = 1, chapitre = 1):
+    def __init__(self, master, debug = False, langue = 'FRE', traduction = 'French Louis Segond', book = 1, chapitre = 1):
         Toplevel.__init__(self)
         self.debug = debug
         self.langue = langue
         self.traduction = traduction
         self.book = book
         self.chapitre = chapitre
+        self.master = master
     
     def interface(self):
         ''' Interface de la fenêtre
@@ -75,6 +76,21 @@ class AppBookmark(Toplevel):
                          side = LEFT)
         self.SCROLL_001.pack(side = RIGHT,
                              fill = Y)
+    
+    def feed_list(self):
+        ''' Actialiser la liste des marque page
+        '''
+        pass
+    
+    def bookmark(self, livre, chapitre):
+        ''' Bookmarks a chapiter
+        emplacement:
+        data/bookmarks.dat
+        format:
+        1,1
+        '''
+    # Si déjà présent dans la liste, ne pas l'ajouter
+    pass
     
     def run(self):
         self.interface()
