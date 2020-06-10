@@ -89,8 +89,8 @@ class AppBookmark(Toplevel):
         format:
         1,1
         '''
-    # Si déjà présent dans la liste, ne pas l'ajouter
-    pass
+        # Si déjà présent dans la liste, ne pas l'ajouter
+        pass
     
     def run(self):
         self.interface()
@@ -99,6 +99,6 @@ if __name__ == '__main__':
     w = Tk()
     w.after(30000, w.destroy)
     w.wm_state('icon')
-    App = AppBookmark()
+    App = AppBookmark(w)
     App.run()
     w.mainloop()
