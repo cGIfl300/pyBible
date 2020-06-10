@@ -18,7 +18,6 @@ Jinja2==2.11.1
 Kivy-Garden==0.1.4
 MarkupSafe==1.1.1
 packaging==20.3
-peewee==3.13.2
 Sphinx==3.0.0
 sphinxcontrib-applehelp==1.0.2
 sphinxcontrib-devhelp==1.0.2
