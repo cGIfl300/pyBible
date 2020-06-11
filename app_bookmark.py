@@ -88,7 +88,7 @@ class AppBookmark(Toplevel):
         self.bookmarks_refresh()
         
     def do_MenuDelete(self, event):
-        ''' BUG Mais là j'sais pas, j'vais boire un coup...
+        ''' Suppression d'un bookmark
         '''
         try:
             selection = self.LSTBookmarks.curselection()
@@ -108,15 +108,13 @@ Structure {l}''')
                 fichier.write(f'o,{l[1]},{l[2]}\n')
             
             if l[0] == 's':
-                if not((int(l[1]) == livre) and (int(l[2]) == chapitre)):
+                if not((int(l[1]) is livre) and (int(l[2]) is chapitre)):
                     if self.debug:
-                        print(f'Livre: {livre} == {l[1]} | Chapitre: {chapitre} == {l[2]}')
+                        print(f'Livre: {livre} is {l[1]} | Chapitre: {chapitre} is {l[2]}')
                     fichier.write(f's,{l[1]},{l[2]}\n')
         
         fichier.close()
         
-        self.bookmarks_refresh()
-        self.bookmark()
         self.bookmarks_refresh()
         
     def do_MenuGo(self, event):
