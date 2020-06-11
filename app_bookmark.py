@@ -97,23 +97,27 @@ class AppBookmark(Toplevel):
             print(f'Livre: {livre} Chapitre: {chapitre}')
         except:
             return 0
-        #fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
+        fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
         
         for l in self.bookmarks:
             
-            if l[0] == 'o':
-                #fichier.write(f'o,{l[1]},{l[2]}\n')
+            print(f'''Livre: {livre} Chapitre: {chapitre}
+Structure {l}''')
             
-            if (l[0] == 's') and (int(l[1]) != livre) and (int(l[2]) != chapitre):
-                        if self.debug:
-                            print(f'Livre: {livre} == {l[1]} | Chapitre: {chapitre} == {l[2]}')
-                
-                        #fichier.write(f's,{l[1]},{l[2]}\n')
+            if l[0] == 'o':
+                fichier.write(f'o,{l[1]},{l[2]}\n')
+            
+            if l[0] == 's':
+                if not((int(l[1]) == livre) and (int(l[2]) == chapitre)):
+                    if self.debug:
+                        print(f'Livre: {livre} == {l[1]} | Chapitre: {chapitre} == {l[2]}')
+                    fichier.write(f's,{l[1]},{l[2]}\n')
         
-        #fichier.close()
+        fichier.close()
         
         self.bookmarks_refresh()
-        self.bookmarks()
+        self.bookmark()
+        self.bookmarks_refresh()
         
     def do_MenuGo(self, event):
         try:
