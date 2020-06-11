@@ -20,13 +20,13 @@ Table des matières
 ==================
 
 * `Site du projet`__
-* Documentation Installation
+* :doc:`index-dev`
 * Documentation Utilisateur
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
 
-.. _projet: https://www.blueroses.fr/pybible/
+.. _projet: https://pybible.rtfd.org/
 __ projet_
 
 
