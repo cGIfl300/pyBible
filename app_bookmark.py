@@ -94,7 +94,8 @@ class AppBookmark(Toplevel):
             selection = self.LSTBookmarks.curselection()
             livre = int(self.bookmarks[selection[0]+1][1])
             chapitre = int(self.bookmarks[selection[0]+1][2])
-            print(f'Livre: {livre} Chapitre: {chapitre}')
+            if self.debug:
+                print(f'Livre: {livre} Chapitre: {chapitre}')
         except:
             return 0
         fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
