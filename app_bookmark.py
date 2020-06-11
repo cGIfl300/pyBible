@@ -100,10 +100,6 @@ class AppBookmark(Toplevel):
         fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
         
         for l in self.bookmarks:
-            
-            print(f'''Livre: {livre} Chapitre: {chapitre}
-Structure {l}''')
-            
             if l[0] == 'o':
                 fichier.write(f'o,{l[1]},{l[2]}\n')
             

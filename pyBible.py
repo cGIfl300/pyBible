@@ -104,7 +104,7 @@ class pyBible(Tk):
         self.menu_marque_pages.btn.bind('<Button-1>', self.do_bookmark)
 
     def do_bookmark(self, event):
-        app = AppBookmark(master = self, chapitre = self.chapitre, book = self.book, debug = True)
+        app = AppBookmark(master = self, chapitre = self.chapitre, book = self.book)
         app.run()
         
     def do_SelectionTraduction(self, event):
