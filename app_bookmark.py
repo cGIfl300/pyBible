@@ -23,10 +23,12 @@
 from tkinter import *
 from peewee import *
 from db_model import *
-import pygame
 from configuration import *
 from class_autobutton import creer_autobutton
 from image_set import image_set
+from class_pyBible import pyBible_Global
+import codecs
+import os
 
 class AppBookmark(Toplevel):
     ''' Interface graphique ...
@@ -39,6 +41,8 @@ class AppBookmark(Toplevel):
         self.book = book
         self.chapitre = chapitre
         self.master = master
+        self.bookmarks = []
+        self.moteur = pyBible_Global(langue = self.langue, traduction = self.traduction)
     
     def interface(self):
         ''' Interface de la fenêtre
@@ -50,7 +54,6 @@ class AppBookmark(Toplevel):
         
         self.menu_delete = creer_autobutton(self.panel_menu, texte = 'Supprimer')
         self.menu_go = creer_autobutton(self.panel_menu, texte = 'Aller')
-        self.menu_add = creer_autobutton(self.panel_menu, texte = 'Ajouter')
         
         self.SCROLL_001 = Scrollbar(self.panel_contenu,
                                     bg = couleur_fond,
@@ -76,21 +79,79 @@ class AppBookmark(Toplevel):
                          side = LEFT)
         self.SCROLL_001.pack(side = RIGHT,
                              fill = Y)
+        
+        self.menu_go.btn.bind('<Button-1>', self.do_MenuGo)
+        self.menu_delete.btn.bind('<Button-1>', self.do_MenuDelete)
+        
+        self.bookmarks_refresh()
+        self.bookmark()
+        self.bookmarks_refresh()
+        
+    def do_MenuDelete(self, event):
+        try:
+            selection = self.LSTBookmarks.curselection()
+            livre = self.bookmarks[selection[0]+1][1]
+            chapitre = self.bookmarks[selection[0]+1][2]
+            print(f'Livre: {livre} Chapitre: {chapitre}')
+        except:
+            return 0
+        fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
+        for l in self.bookmarks:
+            print(f'l {l}')
+            if l[0] == 'o':
+                fichier.write(f'o,{l[1]},{l[2]}\n')
+            if (l[0] == 's') and (int(l[1]) != livre) and (int(l[2]) != chapitre):
+                fichier.write(f's,{l[1]},{l[2]}\n')
+        fichier.close()
+        self.bookmarks_refresh()
+        
+    def do_MenuGo(self, event):
+        try:
+            selection = self.LSTBookmarks.curselection()
+            livre = self.bookmarks[selection[0]+1][1]
+            chapitre = self.bookmarks[selection[0]+1][2]
+            self.master.nouveau_chapitre(livre, chapitre)
+        except:
+            pass
     
-    def feed_list(self):
-        ''' Actialiser la liste des marque page
-        '''
-        pass
-    
-    def bookmark(self, livre, chapitre):
+    def bookmark(self):
         ''' Bookmarks a chapiter
         emplacement:
         data/bookmarks.dat
         format:
-        1,1
+        o,1,1
+        
+        Le premier caractère correspond au type de bookmark:
+        o origin: c'est le bookmark qui est récupéré au lancement de l'application
+        s second: c'est un bookmark classique
         '''
-        # Si déjà présent dans la liste, ne pas l'ajouter
-        pass
+        livre = self.book
+        chapitre = self.chapitre
+        for l in self.bookmarks:
+            if l[0] == 's':
+                if (int(l[1]) == livre) and (int(l[2]) == chapitre):
+                    return 0
+        # Si le chapitre n'est pas encore dans les bookmarks, l'ajouter.
+        fichier = codecs.open('data/bookmarks.dat', 'a', 'utf-8')
+        fichier.write(f's,{livre},{chapitre}\n')
+        fichier.close()
+    
+    def bookmarks_refresh(self):
+        ''' Rafraîchir la liste des bookmarks
+        '''
+        self.bookmarks = []
+        self.LSTBookmarks.delete('0', 'end')
+        fichier = codecs.open('data/bookmarks.dat', 'r', 'utf-8')
+        contenu = fichier.readlines()
+        fichier.close()
+        for l in contenu:
+            l = l.replace('\n', '')
+            self.bookmarks.append(l.split(','))
+            l = l.split(',')
+            if l[0] == 's':
+                nom_livre = self.moteur.chapitre_found(l[1], l[2])
+                nom_livre = self.moteur.bookname.upper()
+                self.LSTBookmarks.insert(END, f'{nom_livre} {l[1]}:{l[2]}')
     
     def run(self):
         self.interface()
