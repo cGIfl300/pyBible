@@ -88,22 +88,32 @@ class AppBookmark(Toplevel):
         self.bookmarks_refresh()
         
     def do_MenuDelete(self, event):
+        ''' BUG Mais là j'sais pas, j'vais boire un coup...
+        '''
         try:
             selection = self.LSTBookmarks.curselection()
-            livre = self.bookmarks[selection[0]+1][1]
-            chapitre = self.bookmarks[selection[0]+1][2]
+            livre = int(self.bookmarks[selection[0]+1][1])
+            chapitre = int(self.bookmarks[selection[0]+1][2])
             print(f'Livre: {livre} Chapitre: {chapitre}')
         except:
             return 0
-        fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
+        #fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
+        
         for l in self.bookmarks:
-            print(f'l {l}')
+            
             if l[0] == 'o':
-                fichier.write(f'o,{l[1]},{l[2]}\n')
+                #fichier.write(f'o,{l[1]},{l[2]}\n')
+            
             if (l[0] == 's') and (int(l[1]) != livre) and (int(l[2]) != chapitre):
-                fichier.write(f's,{l[1]},{l[2]}\n')
-        fichier.close()
+                        if self.debug:
+                            print(f'Livre: {livre} == {l[1]} | Chapitre: {chapitre} == {l[2]}')
+                
+                        #fichier.write(f's,{l[1]},{l[2]}\n')
+        
+        #fichier.close()
+        
         self.bookmarks_refresh()
+        self.bookmarks()
         
     def do_MenuGo(self, event):
         try:
