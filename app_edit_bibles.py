@@ -227,7 +227,7 @@ class AppEditBibles(Toplevel):
             fichier.write(l[0].strip() + '$' + l[1].strip() + '\n')
         fichier.close()
             
-        self.description.config(text = _(f'Exportation réussie de:\n{Nom_Template}\n{self.Traduction}'))
+        self.description.config(text = _('Exportation réussie de:\n{}\n{}').format(Nom_Template, self.Traduction))
         s = pygame.mixer.Sound('sounds/mgb-7.ogg')
         s.play()
     
@@ -244,9 +244,9 @@ class AppEditBibles(Toplevel):
             self.Numero_Livre = self.LSTLivres.selection_get()
         except:
             return 0
-        self.description.config(text = _(f'''Langue: {self.do_langue(self.Code_Langue)}
-Titre: {self.Traduction}
-Livre N°: {self.Numero_Livre}'''))
+        self.description.config(text = _('''Langue: {}
+Titre: {}
+Livre N°: {}''').format(self.do_langue(self.Code_Langue), self.Traduction, self.Numero_Livre))
         self.entry_shortcut.delete('0', 'end')
         self.entry_longue.delete('0', 'end')
         for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):

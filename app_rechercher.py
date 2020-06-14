@@ -100,7 +100,7 @@ class AppRechercher(Toplevel):
             print(résultats)
         self.contenu.config(state = NORMAL)
         self.contenu.delete('0.0', 'end')
-        temporaire = _(f'{len(résultats)} résultats.\n\n')
+        temporaire = _('{} résultats.\n\n').format(len(résultats))
         ancien_nom_livre = ''
         for l in résultats:
             verset = self.moteur.verset_found(l[0], l[1], l[2])

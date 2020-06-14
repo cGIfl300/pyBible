@@ -123,7 +123,7 @@ class Configuration_Langues(Toplevel):
                 Description_Langue = ligne[1]
             pass
         
-        self.LBL_Langue.config(text = _(f'Le code\n{Code_Langue}\nest attribué à la langue\n{Description_Langue}'))
+        self.LBL_Langue.config(text = _('Le code\n{}\nest attribué à la langue\n{}').format(Code_Langue, Description_Langue))
         self.ENT_Description.delete(0, END)
         self.ENT_Description.insert(0, Description_Langue)
     
@@ -136,7 +136,7 @@ class Configuration_Langues(Toplevel):
         q = (Langues.update({Langues.description: Description_Langue})
              .where(Langues.langue == Code_Langue))
         q.execute()
-        self.LBL_Langue.config(text = _(f'Le code\n{Code_Langue}\nest attribué à la langue\n{Description_Langue}'))
+        self.LBL_Langue.config(text = _('Le code\n{}\nest attribué à la langue\n{}').format(Code_Langue, Description_Langue))
         self.liste_langue()
     
     def run(self):

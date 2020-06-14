@@ -31,7 +31,7 @@ couleur_texte_saisie = 'blue'
 couleur_activebackground = couleur_texte_saisie
 couleur_activeforeground = couleur_fond_saisie
 debug = True
-langue_appli = 'en'
+langue_appli = 'fr'
 
 def generer_secret_garden(db_type = 'sqlite',
                           db_username = '',
