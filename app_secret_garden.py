@@ -25,6 +25,12 @@ from tkinter import *
 from creer_bouton import *
 from app_config_sqlite import *
 from app_config_mysql import *
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 class app_secret_garden():
     ''' Interface graphique ...
@@ -41,8 +47,8 @@ class app_secret_garden():
         self.tl.panel_001 = Label(self.tl, bg = couleur_fond)
         
         self.tl.lbl001 = Label(self.tl.panel_001,
-                                   text = '''Création du fichier de configuration
-local: secret_garden.py''',
+                                   text = _('''Création du fichier de configuration
+local: secret_garden.py'''),
                                    bg = couleur_fond,
                                    fg = couleur_texte)
             

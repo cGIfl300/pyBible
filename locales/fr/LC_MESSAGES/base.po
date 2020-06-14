@@ -1,0 +1,184 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pyBible\n"
+"POT-Creation-Date: 2020-06-14 16:41+0200\n"
+"PO-Revision-Date: 2020-06-14 16:42+0200\n"
+"Last-Translator: \n"
+"Language-Team: _\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: acquiert_bible.py\n"
+"X-Poedit-SearchPath-1: app_applytemplate.py\n"
+"X-Poedit-SearchPath-2: app_bookmark.py\n"
+"X-Poedit-SearchPath-3: app_config_mysql.py\n"
+"X-Poedit-SearchPath-4: app_config_sqlite.py\n"
+"X-Poedit-SearchPath-5: app_edit_bibles.py\n"
+"X-Poedit-SearchPath-6: app_rechercher.py\n"
+"X-Poedit-SearchPath-7: app_secret_garden.py\n"
+"X-Poedit-SearchPath-8: app_selecttranslation.py\n"
+"X-Poedit-SearchPath-9: class_autobutton.py\n"
+"X-Poedit-SearchPath-10: class_pyBible.py\n"
+"X-Poedit-SearchPath-11: configuration.py\n"
+"X-Poedit-SearchPath-12: configuration_langues.py\n"
+"X-Poedit-SearchPath-13: creer_bouton.py\n"
+"X-Poedit-SearchPath-14: db_creation.py\n"
+"X-Poedit-SearchPath-15: db_model.py\n"
+"X-Poedit-SearchPath-16: image_set.py\n"
+"X-Poedit-SearchPath-17: pyBible.py\n"
+"X-Poedit-SearchPath-18: README.md\n"
+"X-Poedit-SearchPath-19: secret_garden.py\n"
+"X-Poedit-SearchPath-20: Setup_GUI.py\n"
+
+#: Setup_GUI.py:56
+msgid "Vous avez {} traductions."
+msgstr ""
+
+#: Setup_GUI.py:57
+#, python-format
+msgid "Temps d'execution: %s secondes"
+msgstr ""
+
+#: Setup_GUI.py:76
+msgid "pyBible - Configuration"
+msgstr ""
+
+#: app_applytemplate.py:52
+msgid "Appliquer Modèle"
+msgstr ""
+
+#: app_bookmark.py:56
+msgid "Marque Pages"
+msgstr "Marque Pages"
+
+#: app_bookmark.py:61
+msgid "Supprimer"
+msgstr ""
+
+#: app_bookmark.py:62
+msgid "Aller"
+msgstr ""
+
+#: app_config_mysql.py:38
+msgid "Configuration MySQL"
+msgstr ""
+
+#: app_config_mysql.py:45
+msgid "Serveur: "
+msgstr ""
+
+#: app_config_mysql.py:55
+msgid "Nom d'utilisateur: "
+msgstr ""
+
+#: app_config_mysql.py:65
+msgid "Mot de passe: "
+msgstr ""
+
+#: app_config_mysql.py:75 app_config_sqlite.py:45
+msgid "Base de données: "
+msgstr ""
+
+#: app_config_mysql.py:96 app_config_sqlite.py:56
+msgid "Enregistrer"
+msgstr ""
+
+#: app_config_sqlite.py:38
+msgid "Configuration sqlite"
+msgstr ""
+
+#: app_edit_bibles.py:56
+msgid "Editeur Bibles"
+msgstr ""
+
+#: app_edit_bibles.py:95
+msgid "Aucun livre sélectionné"
+msgstr ""
+
+#: app_edit_bibles.py:100
+msgid "Courte: "
+msgstr ""
+
+#: app_edit_bibles.py:110
+msgid "Complet: "
+msgstr ""
+
+#: app_edit_bibles.py:230
+#, python-brace-format
+msgid ""
+"Exportation réussie de:\n"
+"{Nom_Template}\n"
+"{self.Traduction}"
+msgstr ""
+
+#: app_edit_bibles.py:247
+msgid ""
+"Langue: {self.do_langue(self.Code_Langue)}\n"
+"Titre: {self.Traduction}\n"
+"Livre N°: {self.Numero_Livre}"
+msgstr ""
+
+#: app_rechercher.py:53 pyBible.py:66
+msgid "Rechercher"
+msgstr ""
+
+#: app_rechercher.py:103
+msgid ""
+"{len(résultats)} résultats.\n"
+"\n"
+msgstr ""
+
+#: app_secret_garden.py:50
+msgid ""
+"Création du fichier de configuration\n"
+"local: secret_garden.py"
+msgstr ""
+
+#: app_selecttranslation.py:57
+msgid "Choisir Traduction"
+msgstr ""
+
+#: configuration_langues.py:46
+msgid "pyBible - Editeur de langues"
+msgstr ""
+
+#: configuration_langues.py:63
+msgid "Veuillez sélectionner une langue"
+msgstr ""
+
+#: configuration_langues.py:70
+msgid "Modifier"
+msgstr ""
+
+#: configuration_langues.py:126 configuration_langues.py:139
+#, python-brace-format
+msgid ""
+"Le code\n"
+"{Code_Langue}\n"
+"est attribué à la langue\n"
+"{Description_Langue}"
+msgstr ""
+
+#: db_creation.py:47
+msgid "Configuration DB"
+msgstr ""
+
+#: db_creation.py:51
+msgid "Type de base: {}"
+msgstr ""
+
+#: pyBible.py:59
+msgid "pyBible"
+msgstr "pyBible"
+
+#: pyBible.py:65
+msgid ""
+"Marque\n"
+"Page"
+msgstr ""
+"Marque\n"
+"Page"

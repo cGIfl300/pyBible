@@ -30,6 +30,12 @@ import pygame
 import time
 import codecs
 import os
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 pygame.init()
 
@@ -48,7 +54,7 @@ class SelectTranslation(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Choisir Traduction')
+        self.title(_('Choisir Traduction'))
         
         self.panel0 = Canvas(self, bg = couleur_fond)
         self.panel1 = Canvas(self, bg = couleur_fond)

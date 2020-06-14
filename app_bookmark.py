@@ -29,6 +29,12 @@ from image_set import image_set
 from class_pyBible import pyBible_Global
 import codecs
 import os
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 class AppBookmark(Toplevel):
     ''' Interface graphique ...
@@ -47,13 +53,13 @@ class AppBookmark(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Marque Pages')
+        self.title(_('Marque Pages'))
         
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
         
-        self.menu_delete = creer_autobutton(self.panel_menu, texte = 'Supprimer')
-        self.menu_go = creer_autobutton(self.panel_menu, texte = 'Aller')
+        self.menu_delete = creer_autobutton(self.panel_menu, texte = _('Supprimer'))
+        self.menu_go = creer_autobutton(self.panel_menu, texte = _('Aller'))
         
         self.SCROLL_001 = Scrollbar(self.panel_contenu,
                                     bg = couleur_fond,

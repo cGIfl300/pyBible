@@ -26,6 +26,12 @@ from db_model import *
 import pygame
 from configuration import *
 from class_pyBible import pyBible_Global
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 pygame.init()
 
@@ -44,7 +50,7 @@ class AppRechercher(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Rechercher')
+        self.title(_('Rechercher'))
         
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
@@ -94,7 +100,7 @@ class AppRechercher(Toplevel):
             print(résultats)
         self.contenu.config(state = NORMAL)
         self.contenu.delete('0.0', 'end')
-        temporaire = f'{len(résultats)} résultats.\n\n'
+        temporaire = _(f'{len(résultats)} résultats.\n\n')
         ancien_nom_livre = ''
         for l in résultats:
             verset = self.moteur.verset_found(l[0], l[1], l[2])

@@ -30,6 +30,12 @@ import pygame
 import time
 import codecs
 from app_applytemplate import AppApplyTemplate
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 pygame.init()
 
@@ -47,7 +53,7 @@ class AppEditBibles(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title(u'Editeur Bibles')
+        self.title(_(u'Editeur Bibles'))
         
         self.panel0 = Canvas(self, bg = couleur_fond)
         self.panel1 = Canvas(self, bg = couleur_fond)
@@ -86,12 +92,12 @@ class AppEditBibles(Toplevel):
         self.description = Label(self.panel_saisie,
                                  bg = couleur_fond,
                                  fg = couleur_texte,
-                                 text = u'Aucun livre sélectionné')
+                                 text = _(u'Aucun livre sélectionné'))
         
         self.lbl_shortcut = Label(self.panel_saisie,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Courte: ')
+                                   text = _('Courte: '))
         
         self.entry_shortcut = Entry(self.panel_saisie,
                                 bg = couleur_fond_saisie,
@@ -101,7 +107,7 @@ class AppEditBibles(Toplevel):
         self.lbl_longue = Label(self.panel_saisie,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Complet: ')
+                                   text = _('Complet: '))
         
         self.entry_longue = Entry(self.panel_saisie,
                                 bg = couleur_fond_saisie,
@@ -221,7 +227,7 @@ class AppEditBibles(Toplevel):
             fichier.write(l[0].strip() + '$' + l[1].strip() + '\n')
         fichier.close()
             
-        self.description.config(text = f'Exportation réussie de:\n{Nom_Template}\n{self.Traduction}')
+        self.description.config(text = _(f'Exportation réussie de:\n{Nom_Template}\n{self.Traduction}'))
         s = pygame.mixer.Sound('sounds/mgb-7.ogg')
         s.play()
     
@@ -235,12 +241,12 @@ class AppEditBibles(Toplevel):
     
     def do_SelectLivres(self, event):
         try:
-            self.Numéro_Livre = self.LSTLivres.selection_get()
+            self.Numero_Livre = self.LSTLivres.selection_get()
         except:
             return 0
-        self.description.config(text = f''''Langue: {self.do_langue(self.Code_Langue)}
+        self.description.config(text = _(f'''Langue: {self.do_langue(self.Code_Langue)}
 Titre: {self.Traduction}
-Livre N°: {self.Numéro_Livre}''')
+Livre N°: {self.Numero_Livre}'''))
         self.entry_shortcut.delete('0', 'end')
         self.entry_longue.delete('0', 'end')
         for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):

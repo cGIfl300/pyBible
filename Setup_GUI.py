@@ -33,6 +33,12 @@ from db_creation import *
 from app_secret_garden import app_secret_garden
 from configuration_langues import Configuration_Langues
 from app_edit_bibles import AppEditBibles
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 def do_initialiser(event):
     App = db_creation()
@@ -47,8 +53,8 @@ def do_ImportXML(event):
                 traductions = traductions + 1
                 app = acquiert_bible(fichier_xml = os.path.join(root, name), debug = debug)
                 app.run()
-    print('Vous avez {} traductions.'.format(traductions))
-    print('Temps d\'execution: %s secondes' % (round(time.time() - start_time)))
+    print(_('Vous avez {} traductions.'.format(traductions)))
+    print(_('Temps d\'execution: %s secondes' % (round(time.time() - start_time))))
     
 def do_quitter(event):
     w.destroy()
@@ -67,7 +73,7 @@ def do_EditerBibles(event):
         
 if __name__ == '__main__':
     w = Tk()
-    w.title('pyBible - Configuration')
+    w.title(_('pyBible - Configuration'))
     
     w.panel_001 = Label(w, bg = couleur_fond,
                          fg = couleur_texte)

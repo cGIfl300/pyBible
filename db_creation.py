@@ -26,6 +26,12 @@ from db_model import *
 from tkinter import *
 from peewee import *
 from creer_bouton import *
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 class db_creation():
     ''' Interface graphique ...
@@ -38,11 +44,11 @@ class db_creation():
         ''' Interface de la fenêtre de configuration
         '''
         self.tl = Toplevel()
-        self.tl.title('Configuration DB')
+        self.tl.title(_('Configuration DB'))
         self.tl.panel_001 = Label(self.tl, bg = couleur_fond)
         
         self.tl.lbl001 = Label(self.tl.panel_001,
-                                   text = 'Type de base: {}'.format(db_type),
+                                   text = _('Type de base: {}'.format(db_type)),
                                    bg = couleur_fond,
                                    fg = couleur_texte)
             

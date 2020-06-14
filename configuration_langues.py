@@ -24,6 +24,12 @@ from configuration import *
 from peewee import *
 from db_model import *
 from tkinter import *
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 class Configuration_Langues(Toplevel):
     ''' Interface graphique configuration des langues.
@@ -37,7 +43,7 @@ class Configuration_Langues(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title(u'pyBible - Editeur de langues')
+        self.title(_('pyBible - Editeur de langues'))
         self.geometry('300x400')
         self.panel0 = Canvas(self, bg = couleur_fond)
         self.panel1 = Canvas(self, bg = couleur_fond)
@@ -54,14 +60,14 @@ class Configuration_Langues(Toplevel):
         self.LBL_Langue = Label(self.panel1,
                                 bg = couleur_fond,
                                 fg = couleur_texte,
-                                text = u'Veuillez sélectionner une langue')
+                                text = _('Veuillez sélectionner une langue'))
         self.ENT_Description = Entry(self.panel1,
                                      bg = couleur_fond_saisie,
                                      fg = couleur_texte_saisie)
         self.BTN_Valider = Button(self.panel1,
                                   bg = couleur_fond_saisie,
                                   fg = couleur_texte_saisie,
-                                  text = 'Modifier',
+                                  text = _('Modifier'),
                                   command = self.do_ModifierLangue)
         
         '''
@@ -117,7 +123,7 @@ class Configuration_Langues(Toplevel):
                 Description_Langue = ligne[1]
             pass
         
-        self.LBL_Langue.config(text = f'Le code\n{Code_Langue}\nest attribué à la langue\n{Description_Langue}')
+        self.LBL_Langue.config(text = _(f'Le code\n{Code_Langue}\nest attribué à la langue\n{Description_Langue}'))
         self.ENT_Description.delete(0, END)
         self.ENT_Description.insert(0, Description_Langue)
     
@@ -130,7 +136,7 @@ class Configuration_Langues(Toplevel):
         q = (Langues.update({Langues.description: Description_Langue})
              .where(Langues.langue == Code_Langue))
         q.execute()
-        self.LBL_Langue.config(text = f'Le code\n{Code_Langue}\nest attribué à la langue\n{Description_Langue}')
+        self.LBL_Langue.config(text = _(f'Le code\n{Code_Langue}\nest attribué à la langue\n{Description_Langue}'))
         self.liste_langue()
     
     def run(self):

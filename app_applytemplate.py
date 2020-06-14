@@ -30,6 +30,12 @@ import pygame
 import time
 import codecs
 import os
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 pygame.init()
 
@@ -43,7 +49,7 @@ class AppApplyTemplate(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Appliquer Modèle')
+        self.title(_('Appliquer Modèle'))
         
         self.panel0 = Canvas(self, bg = couleur_fond)
         self.panel1 = Canvas(self, bg = couleur_fond)

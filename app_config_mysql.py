@@ -35,14 +35,14 @@ class app_config_mysql(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Configuration MySQL')
+        self.title(_('Configuration MySQL'))
         
         self.panel_001 = Label(self, bg = couleur_fond)
         
         self.lbl_db_server = Label(self.panel_001,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Serveur: ')
+                                   text = _('Serveur: '))
         
         self.entry_db_server = Entry(self.panel_001,
                                 bg = couleur_fond_saisie,
@@ -52,7 +52,7 @@ class app_config_mysql(Toplevel):
         self.lbl_db_username = Label(self.panel_001,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Nom d\'utilisateur: ')
+                                   text = _('Nom d\'utilisateur: '))
         
         self.entry_db_username = Entry(self.panel_001,
                                 bg = couleur_fond_saisie,
@@ -62,7 +62,7 @@ class app_config_mysql(Toplevel):
         self.lbl_db_password = Label(self.panel_001,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Mot de passe: ')
+                                   text = _('Mot de passe: '))
         
         self.entry_db_password = Entry(self.panel_001,
                                 bg = couleur_fond_saisie,
@@ -72,7 +72,7 @@ class app_config_mysql(Toplevel):
         self.lbl_db_database = Label(self.panel_001,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Base de données: ')
+                                   text = _('Base de données: '))
         
         self.entry_db_database = Entry(self.panel_001,
                                 bg = couleur_fond_saisie,
@@ -93,7 +93,7 @@ class app_config_mysql(Toplevel):
         self.btn_enregistrer = Button(self.panel_001,
                                   bg = couleur_fond_saisie,
                                   fg = couleur_texte_saisie,
-                                  text = 'Enregistrer',
+                                  text = _('Enregistrer'),
                                   command = self.do_genere,
                                   activebackground = couleur_activebackground,
                                   activeforeground = couleur_activeforeground)

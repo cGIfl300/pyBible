@@ -21,12 +21,13 @@ packaging==20.3
 peewee==3.13.2
 pep517==0.6.0
 pexpect==4.8.0
-Pillow==7.1.2
+Pillow==7.1.1
 pkg-resources==0.0.0
 ptyprocess==0.6.0
 pygame==1.9.6
 Pygments==2.6.1
 pyparsing==2.4.7
+python-i18n==0.3.7
 pytoml==0.1.21
 pytz==2019.3
 requests==2.23.0

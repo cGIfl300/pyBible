@@ -35,14 +35,14 @@ class app_config_sqlite(Toplevel):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('Configuration sqlite')
+        self.title(_('Configuration sqlite'))
         
         self.panel_001 = Label(self, bg = couleur_fond)
         
         self.lbl_db_database = Label(self.panel_001,
                                    fg = couleur_texte,
                                    bg = couleur_fond,
-                                   text = 'Base de données: ')
+                                   text = _('Base de données: '))
         
         self.entry_db_database = Entry(self.panel_001,
                                 bg = couleur_fond_saisie,
@@ -53,7 +53,7 @@ class app_config_sqlite(Toplevel):
         self.btn_enregistrer = Button(self.panel_001,
                                   bg = couleur_fond_saisie,
                                   fg = couleur_texte_saisie,
-                                  text = 'Enregistrer',
+                                  text = _('Enregistrer'),
                                   command = self.do_genere,
                                   activebackground = couleur_activebackground,
                                   activeforeground = couleur_activeforeground)

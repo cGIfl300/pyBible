@@ -32,6 +32,12 @@ from class_autobutton import creer_autobutton
 from app_selecttranslation import SelectTranslation
 from app_rechercher import AppRechercher
 from app_bookmark import AppBookmark
+import gettext
+
+fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr.install()
+_ = fr.gettext
+ngettext = fr.ngettext
 
 pygame.init()
 
@@ -50,14 +56,14 @@ class pyBible(Tk):
     def interface(self):
         ''' Interface de la fenêtre
         '''
-        self.title('pyBible')
+        self.title(_('pyBible'))
         self.panel_menu = Canvas(self, bg = couleur_fond)
         self.panel_selection = Canvas(self, bg = couleur_fond)
         self.panel_contenu = Canvas(self, bg = couleur_fond)
         self.panel_menu_bas = Canvas(self, bg = couleur_fond)
         
-        self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = 'Marque\nPage')
-        self.menu_rechercher = creer_autobutton(self.panel_menu, texte = 'Rechercher')
+        self.menu_marque_pages = creer_autobutton(self.panel_menu, texte = _('Marque\nPage'))
+        self.menu_rechercher = creer_autobutton(self.panel_menu, texte = _('Rechercher'))
         
         self.menu_precedent = creer_autobutton(self.panel_menu_bas, texte = '<')
         self.menu_suivant = creer_autobutton(self.panel_menu_bas, texte = '>')
