@@ -28,7 +28,7 @@ from configuration import *
 from class_pyBible import pyBible_Global
 import gettext
 
-fr = gettext.translation('base', localedir='locales', languages=[langue_appli], fallback=False)
+fr = gettext.translation('base', localedir=repertoire_script + 'locales', languages=[langue_appli], fallback=False)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
