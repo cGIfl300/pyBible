@@ -154,7 +154,7 @@ class AppApplyTemplate(Toplevel):
         
     def do_SelectTemplate(self, event):
         try:
-            fichier = codecs.open('data/' + self.LSTTemplates.selection_get(), 'r', 'utf-8')
+            fichier = codecs.open(repertoire_script + 'data/' + self.LSTTemplates.selection_get(), 'r', 'utf-8')
         except:
             return 0
         self.LSTLivres.delete('0', 'end')
@@ -239,7 +239,7 @@ class AppApplyTemplate(Toplevel):
             
     def do_crawl_templates(self):
         templates = 0
-        for root, dirs, files in os.walk('./data/'):
+        for root, dirs, files in os.walk(repertoire_script + '/data/'):
             for name in files:
                 if name.endswith(('.tpl')):
                     self.LSTTemplates.insert(templates, name)

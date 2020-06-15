@@ -104,7 +104,7 @@ class AppBookmark(Toplevel):
                 print(f'Livre: {livre} Chapitre: {chapitre}')
         except:
             return 0
-        fichier = codecs.open('data/bookmarks.dat', 'w', 'utf-8')
+        fichier = codecs.open(repertoire_script + 'data/bookmarks.dat', 'w', 'utf-8')
         
         for l in self.bookmarks:
             if l[0] == 'o':
@@ -147,7 +147,7 @@ class AppBookmark(Toplevel):
                 if (int(l[1]) == livre) and (int(l[2]) == chapitre):
                     return 0
         # Si le chapitre n'est pas encore dans les bookmarks, l'ajouter.
-        fichier = codecs.open('data/bookmarks.dat', 'a', 'utf-8')
+        fichier = codecs.open(repertoire_script + 'data/bookmarks.dat', 'a', 'utf-8')
         fichier.write(f's,{livre},{chapitre}\n')
         fichier.close()
     
@@ -156,7 +156,7 @@ class AppBookmark(Toplevel):
         '''
         self.bookmarks = []
         self.LSTBookmarks.delete('0', 'end')
-        fichier = codecs.open('data/bookmarks.dat', 'r', 'utf-8')
+        fichier = codecs.open(repertoire_script + 'data/bookmarks.dat', 'r', 'utf-8')
         contenu = fichier.readlines()
         fichier.close()
         for l in contenu:
