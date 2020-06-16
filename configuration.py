@@ -44,7 +44,7 @@ def generer_secret_garden(db_type = 'sqlite',
     if debug:
         print('Génération du fichier de configuration de la base de données.')
     pass
-    fichier = open('secret_garden.py', 'w')
+    fichier = open(repertoire_script + 'secret_garden.py', 'w')
     fichier.write('''# -*- coding:utf-8 -*-
 #
 # Copyright © 2020 cGIfl300
