@@ -218,7 +218,7 @@ class AppEditBibles(Toplevel):
         if self.debug:
             print(f'{Nom_Template}')
             
-        fichier = codecs.open('data/' + Nom_Template, 'w', 'utf-8')
+        fichier = codecs.open(repertoire_script + 'data/' + Nom_Template, 'w', 'utf-8')
         for l in liste_livres:
             if l[0].strip() == '':
                 l[0] = '-'
@@ -228,7 +228,7 @@ class AppEditBibles(Toplevel):
         fichier.close()
             
         self.description.config(text = _('Exportation réussie de:\n{}\n{}').format(Nom_Template, self.Traduction))
-        s = pygame.mixer.Sound('sounds/mgb-7.ogg')
+        s = pygame.mixer.Sound(repertoire_script + 'sounds/mgb-7.ogg')
         s.play()
     
     def do_import(self, event):
@@ -236,7 +236,7 @@ class AppEditBibles(Toplevel):
         '''
         app = AppApplyTemplate()
         app.run()
-        s = pygame.mixer.Sound('sounds/mgb-7.ogg')
+        s = pygame.mixer.Sound(repertoire_script + 'sounds/mgb-7.ogg')
         s.play()
     
     def do_SelectLivres(self, event):
@@ -255,7 +255,7 @@ Livre N°: {}''').format(self.do_langue(self.Code_Langue), self.Traduction, self
                 self.entry_shortcut.insert('0', l.Shortcut)
                 
     def do_validate(self, event):
-        s = pygame.mixer.Sound('sounds/blaster08.ogg')
+        s = pygame.mixer.Sound(repertoire_script + 'sounds/blaster08.ogg')
         s.play()
         try:
             q = (Livres.update({Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()})
