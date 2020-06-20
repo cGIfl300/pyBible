@@ -259,7 +259,7 @@ class AppApplyTemplate(Toplevel):
                 print(f'{self.Traduction}')
         except:
             return 0
-        s = pygame.mixer.Sound('sounds/mgb-7.ogg')
+        s = pygame.mixer.Sound(repertoire_script + 'sounds/mgb-7.ogg')
         s.play()
         for l in self.template:
             self.LSTLivres.insert(VAR_row, self.template[VAR_row][0])
