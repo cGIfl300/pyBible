@@ -20,6 +20,7 @@ Table des matières
 ==================
 
 * `Site du projet`__
+* `Code Source`__
 * :doc:`index-dev`
 * Documentation Utilisateur
 * :ref:`genindex`
@@ -29,6 +30,8 @@ Table des matières
 .. _projet: https://pybible.rtfd.org/
 __ projet_
 
+.. _source: https://github.com/cgifl300/pybible/
+__ source_
 
 
 Référence API
