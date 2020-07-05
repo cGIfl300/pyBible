@@ -21,9 +21,6 @@ Table des matières
 * `Code Source`__
 * :doc:`index-dev`
 * Documentation Utilisateur
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 .. _projet: https://pybible.rtfd.org/
 __ projet_
