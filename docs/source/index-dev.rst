@@ -8,8 +8,8 @@ Documentation Installation
 
 Outil de lecture et d'études bibliques OpenSource.  
 
-(DEV) Importer Bible XML
-========================
+Importer Bible XML
+==================
  
 Setup_GUI.py fonctionne avec tkinter, c'est donc une application fenetrée.  
 C'est l'interface de configuration principale du projet.  
@@ -30,24 +30,13 @@ Setup_GUI
 Ce script est à utiliser pour générer la base de données et initialiser les données de configuration. Il est à exécuter AVANT toute compilation.  
 Sauf si vous utilisez directement les scripts, il ne peut pas être utilisé après compilation. C'est un outil destiné aux dévelopeurs permetant de générer et / ou configurer la base de données.  
 
-(DEV) Todo Setup_GUI
---------------------
-
-- Gestion des bookmarks - en cours -
-
-(DEV) Todo pyBible
-==================
+Todo pyBible
+============
 
 Lecture d'une Bible
 -------------------
-
-- Sélection d'une Bible par défaut.  
-- Reprendre la lecture là où on l'avais laissée.  
-
-Marque pages
-------------
-
-- Gestion d'un carnet de marque page (avec nomage de chaque marque page).  
+ 
+- Reprendre la lecture là où on l'avais laissée.    
 
 Commentaires
 ------------
@@ -61,15 +50,14 @@ Possibilité d'ajouter des commentaires:
 - Verset (par défaut)
 - Possibilité de suivre un plan de lecture en fonction de la date actuelle (fêtes et évènements spéciaux inclus)
 
-Création d'un site internet
----------------------------
-
-- Création d'un site internet pour le peojet.  
+Final release
+-------------
+ 
 - Portage sous Windows  
 - Portage sous Android  
 
-Utilisateurs
-============
+Installation depuis les sources
+===============================
 
 Sous Windows, débrouillez-vous, vous avez l'habitude.  
 Sous Linux, allez dans le répertoire destiné aux code sources. Vous devez être sous un environement graphique.  
