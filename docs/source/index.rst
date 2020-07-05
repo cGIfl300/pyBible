@@ -9,11 +9,9 @@ Documentation de pyBible!
 |logo|
 
 
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
    
 
 Table des matières
@@ -32,12 +30,5 @@ __ projet_
 
 .. _source: https://github.com/cgifl300/pybible/
 __ source_
-
-
-Référence API
-=============
- 
-.. automodule:: class_pyBible
-   :members:
    
 .. |logo| image:: _static/logo-small.png
