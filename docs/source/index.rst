@@ -36,62 +36,8 @@ __ source_
 
 Référence API
 =============
-
-.. automodule:: Setup_GUI
-   :members:
-
-.. automodule:: configuration
-   :members:
-
-.. automodule:: creer_bouton
-   :members:
-
-.. automodule:: acquiert_bible
-   :members:
-
-.. automodule:: db_creation
-   :members:
-
-.. automodule:: secret_garden
-   :members:
-
-.. automodule:: db_model
-   :members:
-
-.. automodule:: app_secret_garden
-   :members:
-   
-.. automodule:: app_config_sqlite
-   :members:
-   
-.. automodule:: app_config_mysql
-   :members:
-
-.. automodule:: configuration_langues
-   :members:
-   
-.. automodule:: app_edit_bibles
-   :members:
-
-.. automodule:: app_applytemplate
-   :members:
-   
-.. automodule:: app_selecttranslation
-   :members:
-   
-.. automodule:: class_autobutton
-   :members:
-   
+ 
 .. automodule:: class_pyBible
-   :members:
-   
-.. automodule:: pyBible
-   :members:
-   
-.. automodule:: app_bookmark
-   :members:
-
-.. automodule:: app_rechercher
    :members:
    
 .. |logo| image:: _static/logo-small.png
