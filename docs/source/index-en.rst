@@ -3,9 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    
-=========================
-Documentation de pyBible!
-=========================
+=======================
+pyBible documentation !
+=======================
 
 :doc:`index-en`
 
@@ -17,13 +17,13 @@ Documentation de pyBible!
    :caption: Contents:
    
 
-Table des matières
-==================
+Index
+=====
 
-* `Site du projet`__
-* `Code Source`__
-* :doc:`index-dev`
-* Documentation Utilisateur
+* `Project Website`__
+* `Source Code`__
+* :doc:`index-dev-en`
+* User documentation
 
 .. _projet: https://pybible.rtfd.org/
 __ projet_
