@@ -24,6 +24,10 @@ Index
 * `Source Code`__
 * :doc:`index-dev-en`
 * User documentation
+* `Roadmap https://github.com/users/cGIfl300/projects/4`__
+
+.. _roadmap: https://github.com/users/cGIfl300/projects/4
+__ roadmap_
 
 .. _projet: https://pybible.rtfd.org/
 __ projet_

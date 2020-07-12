@@ -2,7 +2,11 @@
 Documentation Installation
 ==========================
 
-**PROJET EN COURS DE REALISATION**  
+`Roadmap https://github.com/users/cGIfl300/projects/4`__
+
+.. _roadmap: https://github.com/users/cGIfl300/projects/4
+__ roadmap_
+
 
 |bgv|
 
@@ -30,31 +34,6 @@ Setup_GUI
 Ce script est à utiliser pour générer la base de données et initialiser les données de configuration. Il est à exécuter AVANT toute compilation.  
 Sauf si vous utilisez directement les scripts, il ne peut pas être utilisé après compilation. C'est un outil destiné aux dévelopeurs permetant de générer et / ou configurer la base de données.  
 
-Todo pyBible
-============
-
-Lecture d'une Bible
--------------------
- 
-- Reprendre la lecture là où on l'avais laissée.    
-
-Commentaires
-------------
-
-Cette section reflète les idées en l'air pour une évolution future...  
-
-Possibilité d'ajouter des commentaires:  
-- Bible
-- Livre
-- Chapitre
-- Verset (par défaut)
-- Possibilité de suivre un plan de lecture en fonction de la date actuelle (fêtes et évènements spéciaux inclus)
-
-Final release
--------------
- 
-- Portage sous Windows  
-- Portage sous Android  
 
 Installation depuis les sources
 ===============================

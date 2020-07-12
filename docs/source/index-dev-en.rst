@@ -2,7 +2,10 @@
 How to Install
 ==============
 
-**BUILDING IN PROGRESS**  
+`Roadmap https://github.com/users/cGIfl300/projects/4`__
+
+.. _roadmap: https://github.com/users/cGIfl300/projects/4
+__ roadmap_  
 
 |bgv|
 
@@ -31,11 +34,6 @@ Setup_GUI
 ---------
 
 This script must be used to generate the database and to init setup. 
-
-Todo pyBible
-============
-
-Not avaible into english (I won't translate the roadmap in every languages).
 
 Source Code Install
 ===================
