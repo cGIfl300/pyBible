@@ -24,11 +24,15 @@ Table des matières
 * `Code Source`__
 * :doc:`index-dev`
 * Documentation Utilisateur
+* `Roadmap`__
 
 .. _projet: https://pybible.rtfd.org/
 __ projet_
 
 .. _source: https://github.com/cgifl300/pybible/
 __ source_
+
+.. _roadmap: https://github.com/users/cGIfl300/projects/4
+__ roadmap_
    
 .. |logo| image:: _static/logo-small.png
