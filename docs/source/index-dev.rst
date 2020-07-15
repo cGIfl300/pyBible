@@ -67,7 +67,7 @@ L'interface de configuration et de génération de la base de donnée derait s'o
 
 Vous pouvez faire le trie des Bibles qui vous intéresse en supprimant celles qui ne vous intéresse pas dans data/xml .
 
-Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
+Vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://blueroses.fr/pybible/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
 Dans ce cas il vous suffira d'indiquer le chemin de la base de donnée sqlite en cliquant sur 'secret_garden.py'.  
 
 Pour ceux qui désirent générer leur propre base de donnée, une fois le chemin et le type de base de donnée configuré dans secret-garden.py il fous suffit cliquez sur 'initialiser la base locale'. Que votre base soit sqlite ou mysql, elle devra être initialiser, cette étape créé les tables et tous les bidules dont le logiciel a besoins dans la base de données.  
@@ -75,7 +75,7 @@ Pour ceux qui désirent générer leur propre base de donnée, une fois le chemi
 Importer XML  
 ------------
 
-L'importation XML peut être longue, surtout sur des configuration légère, vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://www.blueroses.fr/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
+L'importation XML peut être longue, surtout sur des configuration légère, vous trouverez une base de donnée déjà construite en téléchargement sur mon site personnel https://blueroses.fr/pybible/dl/pybible.db . C'est la méthode d'installation recommandée si vous désirez utiliser toutes les traductions disponibles.  
 L'importation XML importe toutes les Bibles présentes dans data/xml .  
 L'application se fige alors pour éviter toute interaction avec la base de données... allez boire un café ou deux.  
 

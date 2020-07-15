@@ -67,7 +67,7 @@ Setup interface should be now opened (Setup_GUI is not translated):
 
 You can delete useless Bibles in data/xml .
 
-You can dl all Bibles in a single database at https://www.blueroses.fr/dl/pybible.db .  
+You can dl all Bibles in a single database at https://blueroses.fr/pybible/dl/pybible.db .  
 If you choose this method just click on 'secret_garden.py'.  
 
 For those who choosed to create their own database, once the path of the database is defined into secret-garden.py you can click on 'initialiser la base locale' whatever your database is sqlite or mysql.
@@ -75,7 +75,7 @@ For those who choosed to create their own database, once the path of the databas
 Import XML  
 ----------
 
-Import XML take much time, you should considere using a pre-built database at https://www.blueroses.fr/dl/pybible.db .
+Import XML take much time, you should considere using a pre-built database at https://blueroses.fr/pybible/dl/pybible.db .
 
 XML Import imports all XML Bibles from data/xml .
 

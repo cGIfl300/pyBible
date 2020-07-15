@@ -7,6 +7,6 @@
 db_type = 'sqlite'
 db_username = ''
 db_password = ''
-db_database = '/home/nume/pyBible/data/pybible.db'
+db_database = '/home/nume/src/pyBible/data/pybible.db'
 db_server = ''
 db_port = 3306

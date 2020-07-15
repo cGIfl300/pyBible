@@ -32,7 +32,10 @@ from class_autobutton import creer_autobutton
 from app_selecttranslation import SelectTranslation
 from app_rechercher import AppRechercher
 from app_bookmark import AppBookmark
+from app_Iamreading import AppIamReading
 import gettext
+import codecs
+import os
 
 fr = gettext.translation('base', localedir=repertoire_script + 'locales', languages=[langue_appli], fallback=False)
 fr.install()
@@ -99,8 +102,6 @@ class pyBible(Tk):
         self.contenu.pack(fill = BOTH,
                           expand = True)
         
-        self.nouveau_chapitre(1, 1)
-        
         ''' Binding
         '''
         self.menu_suivant.btn.bind('<Button-1>', self.do_MenuSuivant)
@@ -108,6 +109,8 @@ class pyBible(Tk):
         self.menu_selection.btn.bind('<Button-1>', self.do_SelectionTraduction)
         self.menu_rechercher.btn.bind('<Button-1>', self.do_MenuRechercher)
         self.menu_marque_pages.btn.bind('<Button-1>', self.do_bookmark)
+
+        self.restaurer_lecture()
 
     def do_bookmark(self, event):
         app = AppBookmark(master = self, chapitre = self.chapitre, book = self.book)
@@ -141,6 +144,7 @@ class pyBible(Tk):
             if self.book > 1:
                 self.book -= 1
                 self.chapitre = self.max_chapitre()
+                
         self.nouveau_chapitre(self.book, self.chapitre)
     
     def max_chapitre(self):
@@ -153,10 +157,26 @@ class pyBible(Tk):
                 total += 1
                 ancien_chapitre = liste.N_Chapitre
         return total
+    
+    def restaurer_lecture(self):
+        fichier = codecs.open(repertoire_script + 'data/bookmarks.dat', 'r', 'utf-8')
+        contenu = fichier.readlines()
+        fichier.close()
+        print(f'{repertoire_script}data/bookmarks.dat\n{contenu}')
+        for l in contenu:
+            l = l.replace('\n', '')
+            l = l.split(',')
+            if l[0] == 'o':
+                print(f'{l}\nRestauration : {l[1]} - {l[2]}')
+                self.book = int(l[1])
+                self.chapitre = int(l[2])
+                self.nouveau_chapitre(self.book, self.chapitre)
 
     def nouveau_chapitre(self, book, chapitre):
         ''' Affiche un chapitre
         '''
+        App = AppIamReading(book = book, chapitre = chapitre)
+        App.run()
         self.contenu.config(state = NORMAL)
         self.contenu.delete('0.0', 'end')
         temporaire = self.magic_system.chapitre_found(book = book, chapitre = chapitre)
