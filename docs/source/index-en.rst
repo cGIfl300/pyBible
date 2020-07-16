@@ -7,7 +7,7 @@
 English pyBible documentation
 =============================
 
-:doc:`index-en`
+:doc:`index`
 
 |logo|
 
