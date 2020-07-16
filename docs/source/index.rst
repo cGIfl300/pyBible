@@ -23,7 +23,7 @@ Table des matières
 * `Site du projet`__
 * `Code Source`__
 * :doc:`index-dev`
-* Documentation Utilisateur
+* :doc:`index-user_fr`
 * `Roadmap`__
 
 .. _projet: https://pybible.rtfd.org/

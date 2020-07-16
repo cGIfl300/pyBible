@@ -23,7 +23,7 @@ Index
 * `Project Website`__
 * `Source Code`__
 * :doc:`index-dev-en`
-* User documentation
+* :doc:`index-user_en`
 * `Roadmap`__
 
 .. _projet: https://pybible.rtfd.org/
