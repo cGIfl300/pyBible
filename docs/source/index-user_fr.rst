@@ -38,6 +38,8 @@ Vous pouvez aller au chapitre suivant en cliquant sur "suivant".
 
 Vous pouvez aller au chapitre précédent en cliquant sur "précédent".
 
+|003|
+
 Lorsque vous fermez l'application, à la prochaine ouverture, le dernier chapitre en cours de lecture sera affiché à nouveau.
 
 Changer de traduction
@@ -45,7 +47,7 @@ Changer de traduction
 
 Cliquez sur le nom de la traduction actuelle pour changer de traduction de Bible.
 
-|003|
+|004|
 
 Il vous suffit alors de choisir la traduction désirée.
 
@@ -62,9 +64,7 @@ Marque-pages
 
 Vous pouvez gérer vos propre marque pages.
 
-|004|
-
-|011|
+|005|
 
 En cliquant sur "aller" le marque-page est alors affiché dans la fenètre de lecture principale.
 
@@ -79,7 +79,7 @@ Rechercher
 
 Vous pouvez chercher un ou plusieurs mots dans la traduction actuelle.
 
-|005|
+|006|
 
 Les résultats de recherche s'affichent alors ordonnés par livres.
 

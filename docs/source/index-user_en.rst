@@ -38,6 +38,8 @@ You can turn to the next chapiter clicking on "next".
 
 You can turn to the previous chapiter clicking on "previous".
 
+|003|
+
 When shutting down the application, the actual chapiter is recorded and restaured at the next start.
 
 Switching translation
@@ -45,7 +47,7 @@ Switching translation
 
 Click on the actual translation to switch.
 
-|003|
+|004|
 
 Select the translation you want to use.
 
@@ -62,9 +64,7 @@ Bookmarks
 
 You can use your own bookmarks.
 
-|004|
-
-|011|
+|005|
 
 By clicking on "go" the selected bookmark is printing to the main window.
 
@@ -79,7 +79,7 @@ Search
 
 You can search for one word or phrase into the actual active Bible translation.
 
-|005|
+|006|
 
 Results will be printed by books.
 
