@@ -3,7 +3,7 @@ all: clean init doc setup pycache
 init:
 	@echo "Entering setup"
 	@echo "Generating virtual environment"
-	python3 -m virtualenv -p python3 venv
+	/home/nume/python384/bin/python3 -m virtualenv -p /home/nume/python384/bin/python3 venv
 	venv/bin/python3 -m pip install -r requirements.txt
 
 setup:
