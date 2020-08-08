@@ -24,8 +24,9 @@ from configuration import *
 from tkinter import *
 from PIL import Image, ImageTk
 
-class creer_bouton():
-    ''' Ajouter un bouton personnalisé avec une image
+
+class creer_bouton:
+    """ Ajouter un bouton personnalisé avec une image
     qui change en fonction du survol de celui-ci.
     
     exemple d'utilisation:
@@ -35,24 +36,24 @@ class creer_bouton():
     
     images/mon_image.png sera utilisé par défaut
     images/mon_image_over.png sera utilisé quand le curseur sera au dessus du bouton
-    '''
-    def __init__(self, master, image_locale, cote = LEFT):
+    """
+
+    def __init__(self, master, image_locale, cote=LEFT):
         self.master = master
-        self.original = Image.open(repertoire_script + image_locale + '.png')
+        self.original = Image.open(repertoire_script + image_locale + ".png")
         self.image_locale = ImageTk.PhotoImage(self.original)
-        self.original_over = Image.open(repertoire_script + image_locale + '_over.png')
+        self.original_over = Image.open(repertoire_script + image_locale + "_over.png")
         self.image_over = ImageTk.PhotoImage(self.original_over)
-        
-        self.btn = Label(master, image = self.image_locale,
-                            bg = couleur_fond)
-        
-        self.btn.pack(expand = True, fill = BOTH, side = cote)
-        
+
+        self.btn = Label(master, image=self.image_locale, bg=couleur_fond)
+
+        self.btn.pack(expand=True, fill=BOTH, side=cote)
+
         self.btn.bind("<Enter>", self.do_btn_over)
         self.btn.bind("<Leave>", self.do_btn_leave)
-    
+
     def do_btn_over(self, event):
-        self.btn.config(image = self.image_over)
-        
+        self.btn.config(image=self.image_over)
+
     def do_btn_leave(self, event):
-        self.btn.config(image = self.image_locale)
+        self.btn.config(image=self.image_locale)
