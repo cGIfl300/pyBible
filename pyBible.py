@@ -20,22 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from creer_bouton import creer_bouton
-from image_set import image_set
-from configuration import *
-from peewee import *
-from db_model import *
-import pygame
-from class_pyBible import pyBible_Global
-from class_autobutton import creer_autobutton
-from app_selecttranslation import SelectTranslation
-from app_rechercher import AppRechercher
-from app_bookmark import AppBookmark
-from app_Iamreading import AppIamReading
-import gettext
 import codecs
-import os
+import gettext
+from tkinter import *
+
+import pygame
+from peewee import *
+
+from app_Iamreading import AppIamReading
+from app_bookmark import AppBookmark
+from app_rechercher import AppRechercher
+from app_selecttranslation import SelectTranslation
+from class_autobutton import creer_autobutton
+from class_pyBible import pyBible_Global
+from db_model import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()
@@ -78,7 +76,8 @@ class pyBible(Tk):
         self.menu_selection = creer_autobutton(self.panel_selection, texte=nom_complet)
 
         self.SCROLL_001 = Scrollbar(self.panel_contenu, bg=couleur_fond, orient=VERTICAL)
-        self.contenu = Text(self.panel_contenu, bg=couleur_fond, fg=couleur_texte, wrap=WORD, yscrollcommand=self.SCROLL_001.set)
+        self.contenu = Text(self.panel_contenu, bg=couleur_fond, fg=couleur_texte, wrap=WORD,
+                            yscrollcommand=self.SCROLL_001.set)
 
         self.SCROLL_001.config(command=self.contenu.yview)
         self.contenu.config(state=DISABLED)
@@ -144,7 +143,8 @@ class pyBible(Tk):
             Livres.N_Livres == self.book,
         )
         v = Versets.select().where(
-            Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue), Versets.ID_Livre == l
+            Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue),
+            Versets.ID_Livre == l
         )
         ancien_chapitre = ""
         for liste in v:

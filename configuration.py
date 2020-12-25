@@ -23,7 +23,8 @@
 import os
 
 chemin_script = os.path.abspath(__file__)
-repertoire_script = chemin_script[: next(i for i in reversed(range(len(chemin_script))) if chemin_script[i] == os.path.sep) + 1]
+repertoire_script = chemin_script[
+                    : next(i for i in reversed(range(len(chemin_script))) if chemin_script[i] == os.path.sep) + 1]
 couleur_fond = "white"
 couleur_texte = "blue"
 couleur_fond_saisie = "white"
@@ -34,7 +35,8 @@ debug = True
 langue_appli = "fr"
 
 
-def generer_secret_garden(db_type="sqlite", db_username="", db_password="", db_database="change_me.db", db_server="", db_port=3306):
+def generer_secret_garden(db_type="sqlite", db_username="", db_password="", db_database="change_me.db", db_server="",
+                          db_port=3306):
     """ Génération du fichier de configuration de la base de données.
     """
     if debug:

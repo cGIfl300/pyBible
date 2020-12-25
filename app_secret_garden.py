@@ -20,12 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from configuration import *
-from tkinter import *
-from creer_bouton import *
-from app_config_sqlite import *
-from app_config_mysql import *
 import gettext
+
+from app_config_mysql import *
+from app_config_sqlite import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()

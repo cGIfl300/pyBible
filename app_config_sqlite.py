@@ -20,10 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from configuration import *
-from creer_bouton import *
 import os
+
+from creer_bouton import *
 
 
 class app_config_sqlite(Toplevel):

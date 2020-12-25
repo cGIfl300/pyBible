@@ -20,17 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from creer_bouton import creer_bouton
-from image_set import image_set
-from configuration import *
-from peewee import *
-from db_model import *
-import pygame
-import time
-import codecs
-import os
 import gettext
+from tkinter import *
+
+import pygame
+from peewee import *
+
+from creer_bouton import creer_bouton
+from db_model import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()

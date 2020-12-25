@@ -20,20 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from creer_bouton import creer_bouton
-from image_set import image_set
-import xml.etree.ElementTree as ET
-from PIL import Image, ImageTk
-from acquiert_bible import *
-from configuration import *
-from tkinter import *
+import gettext
 import time
-import os
-from db_creation import *
+
+from acquiert_bible import *
+from app_edit_bibles import AppEditBibles
 from app_secret_garden import app_secret_garden
 from configuration_langues import Configuration_Langues
-from app_edit_bibles import AppEditBibles
-import gettext
+from db_creation import *
+from image_set import image_set
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()

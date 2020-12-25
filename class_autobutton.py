@@ -21,6 +21,7 @@
 # THE SOFTWARE.
 
 from tkinter import *
+
 from configuration import *
 
 

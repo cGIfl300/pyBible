@@ -24,14 +24,12 @@
 Application qui permet de garder la page active
 """
 
-from peewee import *
-from db_model import *
-from configuration import *
-from class_autobutton import creer_autobutton
-from image_set import image_set
 import codecs
-import os
 import gettext
+
+from peewee import *
+
+from configuration import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()

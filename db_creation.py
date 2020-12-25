@@ -20,13 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from secret_garden import *
-from configuration import *
-from db_model import *
-from tkinter import *
-from peewee import *
-from creer_bouton import *
 import gettext
+
+from peewee import *
+
+from creer_bouton import *
+from db_model import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()
@@ -49,7 +48,8 @@ class db_creation:
         self.tl.title(_("Configuration DB"))
         self.tl.panel_001 = Label(self.tl, bg=couleur_fond)
 
-        self.tl.lbl001 = Label(self.tl.panel_001, text=_("Type de base: {}".format(db_type)), bg=couleur_fond, fg=couleur_texte)
+        self.tl.lbl001 = Label(self.tl.panel_001, text=_("Type de base: {}".format(db_type)), bg=couleur_fond,
+                               fg=couleur_texte)
 
         self.tl.menu1 = creer_bouton(self.tl.panel_001, image_locale="images/menu_confirmer", cote=BOTTOM)
         self.tl.menu1.btn.bind("<Button-1>", self.do_initialisation)

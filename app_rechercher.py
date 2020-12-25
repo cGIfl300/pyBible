@@ -20,13 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from peewee import *
-from db_model import *
-import pygame
-from configuration import *
-from class_pyBible import pyBible_Global
 import gettext
+from tkinter import *
+
+import pygame
+from peewee import *
+
+from class_pyBible import pyBible_Global
+from configuration import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()
@@ -58,7 +59,8 @@ class AppRechercher(Toplevel):
         self.panel_contenu = Canvas(self, bg=couleur_fond)
 
         self.SCROLL_001 = Scrollbar(self.panel_contenu, bg=couleur_fond, orient=VERTICAL)
-        self.contenu = Text(self.panel_contenu, bg=couleur_fond, fg=couleur_texte, wrap=WORD, yscrollcommand=self.SCROLL_001.set)
+        self.contenu = Text(self.panel_contenu, bg=couleur_fond, fg=couleur_texte, wrap=WORD,
+                            yscrollcommand=self.SCROLL_001.set)
         self.SCROLL_001.config(command=self.contenu.yview)
         self.contenu.config(state=DISABLED)
         self.entry_recherche = Entry(self.panel_menu, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")

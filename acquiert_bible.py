@@ -21,9 +21,9 @@
 # THE SOFTWARE.
 
 import xml.etree.ElementTree as ET
-from secret_garden import *
-from configuration import *
+
 from peewee import *
+
 from db_model import *
 
 

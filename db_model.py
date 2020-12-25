@@ -20,9 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from secret_garden import *
-from configuration import *
 from peewee import *
+
+from configuration import *
+from secret_garden import *
 
 
 def connexion_db():

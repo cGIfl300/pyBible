@@ -20,9 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from configuration import *
 from tkinter import *
+
 from PIL import Image, ImageTk
+
+from configuration import *
 
 
 class creer_bouton:

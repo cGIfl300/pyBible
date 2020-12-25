@@ -15,7 +15,6 @@ import sys
 
 sys.path.insert(0, os.path.abspath("../.."))
 
-
 # -- Project information -----------------------------------------------------
 
 project = "pyBible"
@@ -24,7 +23,6 @@ author = "cGIfl300"
 
 # The full version, including alpha/beta/rc tags
 release = "1.0"
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -49,7 +47,6 @@ language = "fr"
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 

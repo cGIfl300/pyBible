@@ -20,17 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from creer_bouton import creer_bouton
-from image_set import image_set
-from configuration import *
-from peewee import *
-from db_model import *
-import pygame
-import time
 import codecs
-from app_applytemplate import AppApplyTemplate
 import gettext
+import time
+from tkinter import *
+
+import pygame
+from peewee import *
+
+from app_applytemplate import AppApplyTemplate
+from creer_bouton import creer_bouton
+from db_model import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()
@@ -94,7 +94,8 @@ class AppEditBibles(Toplevel):
         self.SCROLL_003.config(command=self.LSTLivres.yview)
         self.panel_langue.config(yscrollcommand=self.SCROLL_001.set)
 
-        self.description = Label(self.panel_saisie, bg=couleur_fond, fg=couleur_texte, text=_("Aucun livre sélectionné"))
+        self.description = Label(self.panel_saisie, bg=couleur_fond, fg=couleur_texte,
+                                 text=_("Aucun livre sélectionné"))
 
         self.lbl_shortcut = Label(self.panel_saisie, fg=couleur_texte, bg=couleur_fond, text=_("Courte: "))
 
@@ -228,8 +229,10 @@ Livre N°: {}"""
         s = pygame.mixer.Sound(repertoire_script + "sounds/blaster08.ogg")
         s.play()
         try:
-            q = Livres.update({Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()}).where(
-                Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction, Livres.N_Livres == self.Numéro_Livre)
+            q = Livres.update(
+                {Livres.Nom_Livre: self.entry_longue.get(), Livres.Shortcut: self.entry_shortcut.get()}).where(
+                Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
+                                                         Livres.N_Livres == self.Numéro_Livre)
             )
             q.execute()
         except:

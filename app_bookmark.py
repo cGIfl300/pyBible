@@ -20,16 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from peewee import *
-from db_model import *
-from configuration import *
-from class_autobutton import creer_autobutton
-from image_set import image_set
-from class_pyBible import pyBible_Global
 import codecs
-import os
 import gettext
+from tkinter import *
+
+from peewee import *
+
+from class_autobutton import creer_autobutton
+from class_pyBible import pyBible_Global
+from configuration import *
+from image_set import image_set
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()

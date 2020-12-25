@@ -20,17 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from tkinter import *
-from creer_bouton import creer_bouton
-from image_set import image_set
-from configuration import *
-from peewee import *
-from db_model import *
-import pygame
-import time
 import codecs
-import os
 import gettext
+import os
+from tkinter import *
+
+import pygame
+from peewee import *
+
+from creer_bouton import creer_bouton
+from db_model import *
 
 fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
 fr.install()
@@ -245,8 +244,10 @@ class AppApplyTemplate(Toplevel):
         s.play()
         for l in self.template:
             self.LSTLivres.insert(VAR_row, self.template[VAR_row][0])
-            q = Livres.update({Livres.Nom_Livre: self.template[VAR_row][0], Livres.Shortcut: self.template[VAR_row][1]}).where(
-                Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction, Livres.N_Livres == VAR_row + 1)
+            q = Livres.update(
+                {Livres.Nom_Livre: self.template[VAR_row][0], Livres.Shortcut: self.template[VAR_row][1]}).where(
+                Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
+                                                         Livres.N_Livres == VAR_row + 1)
             )
             q.execute()
             VAR_row += 1
