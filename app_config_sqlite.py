@@ -20,30 +20,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import os
-
 from creer_bouton import *
 
 
 class app_config_sqlite(Toplevel):
-    """ Application configuration sqlite
-    """
+    """Application configuration sqlite"""
 
     def __init__(self, debug=False):
         Toplevel.__init__(self)
         self.debug = debug
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("Configuration sqlite"))
 
         self.panel_001 = Label(self, bg=couleur_fond)
 
-        self.lbl_db_database = Label(self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Base de données: "))
+        self.lbl_db_database = Label(
+            self.panel_001,
+            fg=couleur_texte,
+            bg=couleur_fond,
+            text=_("Base de données: "),
+        )
 
-        self.entry_db_database = Entry(self.panel_001, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
-        self.entry_db_database.insert(0, repertoire_script + "data{}pybible.db".format(os.path.sep))
+        self.entry_db_database = Entry(
+            self.panel_001,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
+        self.entry_db_database.insert(
+            0, repertoire_script + "data{}pybible.db".format(os.path.sep)
+        )
 
         self.btn_enregistrer = Button(
             self.panel_001,
@@ -73,7 +81,7 @@ class app_config_sqlite(Toplevel):
         self.interface()
 
     def do_genere(self):
-        generer_secret_garden(db_type="sqlite", db_database=self.entry_db_database.get())
+        generate_setup_file(db_type="sqlite", db_database=self.entry_db_database.get())
         self.destroy()
 
 

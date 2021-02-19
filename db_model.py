@@ -27,17 +27,24 @@ from secret_garden import *
 
 
 def connexion_db():
-    """ Connexion à la base de données
-    """
+    """Connexion à la base de données"""
     if db_type == "sqlite":
         if debug:
             print("Connexion à la base de donnée SQLite {}".format(db_database))
-        db_link = SqliteDatabase(db_database, pragmas={"journal_mode": "wal", "cache_size": -1024 * 256})
+        db_link = SqliteDatabase(
+            db_database, pragmas={"journal_mode": "wal", "cache_size": -1024 * 256}
+        )
 
     if db_type == "mysql":
         if debug:
             print("Connexion à la base de donnée MySQL {}".format(db_database))
-        db_link = MySQLDatabase(db_database, user=db_username, password=db_password, host=db_server, port=db_port)
+        db_link = MySQLDatabase(
+            db_database,
+            user=db_username,
+            password=db_password,
+            host=db_server,
+            port=db_port,
+        )
     return db_link
 
 

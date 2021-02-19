@@ -31,14 +31,19 @@ from peewee import *
 
 from configuration import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
 
 
 class AppIamReading:
-    """ Interface graphique ...
+    """Interface graphique ...
     update = mise à jour du bookmark
     """
 
@@ -68,8 +73,7 @@ class AppIamReading:
         fichier.close()
 
     def bookmarks_refresh(self):
-        """ Rafraîchir la liste des bookmarks
-        """
+        """Rafraîchir la liste des bookmarks"""
         self.bookmarks = []
         fichier = codecs.open(repertoire_script + "data/bookmarks.dat", "r", "utf-8")
         contenu = fichier.readlines()
@@ -81,8 +85,7 @@ class AppIamReading:
                 self.bookmarks.append(l)
 
     def run(self):
-        """ Cette application n'a pas d'interface
-        """
+        """Cette application n'a pas d'interface"""
         self.update()
 
 

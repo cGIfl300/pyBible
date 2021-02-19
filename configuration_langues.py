@@ -27,14 +27,19 @@ from peewee import *
 
 from db_model import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
 
 
 class Configuration_Langues(Toplevel):
-    """ Interface graphique configuration des langues.
+    """Interface graphique configuration des langues.
     Ce module permet de configurer les langues de pyBible.
     ENG = Anglais; FRA = Français... en fonction des Bibles présentes dans la base de donnée.
     """
@@ -44,8 +49,7 @@ class Configuration_Langues(Toplevel):
         self.debug = debug
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("pyBible - Editeur de langues"))
         self.geometry("300x400")
         self.panel0 = Canvas(self, bg=couleur_fond)
@@ -54,16 +58,28 @@ class Configuration_Langues(Toplevel):
         self.WDG_Langues = []
         self.SCROLL_LST = Scrollbar(self, orient=VERTICAL)
         self.LSTLangues = Listbox(
-            self.panel0, selectmode=SINGLE, bg=couleur_fond_saisie, fg=couleur_texte_saisie,
-            yscrollcommand=self.SCROLL_LST.set
+            self.panel0,
+            selectmode=SINGLE,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            yscrollcommand=self.SCROLL_LST.set,
         )
         self.SCROLL_LST.config(command=self.LSTLangues.yview)
-        self.LBL_Langue = Label(self.panel1, bg=couleur_fond, fg=couleur_texte,
-                                text=_("Veuillez sélectionner une langue"))
-        self.ENT_Description = Entry(self.panel1, bg=couleur_fond_saisie, fg=couleur_texte_saisie)
+        self.LBL_Langue = Label(
+            self.panel1,
+            bg=couleur_fond,
+            fg=couleur_texte,
+            text=_("Veuillez sélectionner une langue"),
+        )
+        self.ENT_Description = Entry(
+            self.panel1, bg=couleur_fond_saisie, fg=couleur_texte_saisie
+        )
         self.BTN_Valider = Button(
-            self.panel1, bg=couleur_fond_saisie, fg=couleur_texte_saisie, text=_("Modifier"),
-            command=self.do_ModifierLangue
+            self.panel1,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            text=_("Modifier"),
+            command=self.do_ModifierLangue,
         )
 
         """
@@ -90,7 +106,7 @@ class Configuration_Langues(Toplevel):
             VAR_row += 1
 
     def liste_langue(self):
-        """ Retourne la liste des langues présentes dans la base de données.
+        """Retourne la liste des langues présentes dans la base de données.
         self.langue[0][0] = FRE; self.langue[0][1] = Français
         self.langue[1][0] = ENG; self.langue[1][1] = Anglais
         ...
@@ -112,7 +128,10 @@ class Configuration_Langues(Toplevel):
             pass
 
         self.LBL_Langue.config(
-            text=_("Le code\n{}\nest attribué à la langue\n{}").format(Code_Langue, Description_Langue))
+            text=_("Le code\n{}\nest attribué à la langue\n{}").format(
+                Code_Langue, Description_Langue
+            )
+        )
         self.ENT_Description.delete(0, END)
         self.ENT_Description.insert(0, Description_Langue)
 
@@ -122,10 +141,15 @@ class Configuration_Langues(Toplevel):
         """
         Code_Langue = self.LSTLangues.selection_get()
         Description_Langue = self.ENT_Description.get()
-        q = Langues.update({Langues.description: Description_Langue}).where(Langues.langue == Code_Langue)
+        q = Langues.update({Langues.description: Description_Langue}).where(
+            Langues.langue == Code_Langue
+        )
         q.execute()
         self.LBL_Langue.config(
-            text=_("Le code\n{}\nest attribué à la langue\n{}").format(Code_Langue, Description_Langue))
+            text=_("Le code\n{}\nest attribué à la langue\n{}").format(
+                Code_Langue, Description_Langue
+            )
+        )
         self.liste_langue()
 
     def run(self):

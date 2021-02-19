@@ -22,16 +22,19 @@
 
 import codecs
 import gettext
-import os
 from tkinter import *
 
 import pygame
-from peewee import *
 
 from creer_bouton import creer_bouton
 from db_model import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
@@ -40,16 +43,14 @@ pygame.init()
 
 
 class AppApplyTemplate(Toplevel):
-    """ Applique un modèle de nomage de livres à une Bible
-    """
+    """Applique un modèle de nomage de livres à une Bible"""
 
     def __init__(self, debug=False):
         Toplevel.__init__(self)
         self.debug = debug
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("Appliquer Modèle"))
 
         self.panel0 = Canvas(self, bg=couleur_fond)
@@ -106,8 +107,12 @@ class AppApplyTemplate(Toplevel):
         """ Implantation des composants
         """
 
-        self.menu_annuler = creer_bouton(self.panel_menu, image_locale="images/menu_annuler", cote=TOP)
-        self.menu_valider = creer_bouton(self.panel_menu, image_locale="images/menu_enregistrer", cote=TOP)
+        self.menu_annuler = creer_bouton(
+            self.panel_menu, image_locale="images/menu_annuler", cote=TOP
+        )
+        self.menu_valider = creer_bouton(
+            self.panel_menu, image_locale="images/menu_enregistrer", cote=TOP
+        )
 
         self.panel0.pack(fill=BOTH, expand=True)
         self.panel1.pack(fill=BOTH, expand=True)
@@ -127,30 +132,34 @@ class AppApplyTemplate(Toplevel):
 
         self.do_feed_lists()
 
-        self.LSTLangues.bind("<Button-1>", self.do_SelectLangues)
-        self.LSTTraductions.bind("<Button-1>", self.do_SelectTraductions)
-        self.LSTTemplates.bind("<Button-1>", self.do_SelectTemplate)
+        self.LSTLangues.bind("<Button-1>", self.do_select_language)
+        self.LSTTraductions.bind("<Button-1>", self.do_select_traduction)
+        self.LSTTemplates.bind("<Button-1>", self.do_select_template)
         self.menu_annuler.btn.bind("<Button-1>", self.do_quitter)
         self.menu_valider.btn.bind("<Button-1>", self.do_apply_template)
 
-    def do_SelectTemplate(self, event):
+    def do_select_template(self, event):
         try:
-            fichier = codecs.open(repertoire_script + "data/" + self.LSTTemplates.selection_get(), "r", "utf-8")
+            fichier = codecs.open(
+                repertoire_script + "data/" + self.LSTTemplates.selection_get(),
+                "r",
+                "utf-8",
+            )
         except:
             return 0
         self.LSTLivres.delete("0", "end")
         self.template = []
         contenu = fichier.readlines()
-        for l in contenu:
-            l = l.strip("\n")
-            self.template.append(l.split("$"))
+        for line in contenu:
+            line = line.strip("\n")
+            self.template.append(line.split("$"))
         fichier.close()
         VAR_row = 0
-        for l in self.template:
+        for line in self.template:
             self.LSTLivres.insert(VAR_row, self.template[VAR_row][0])
             VAR_row += 1
 
-    def do_SelectLangues(self, event):
+    def do_select_language(self, event):
         self.LSTTraductions.delete("0", "end")
         self.LSTLivres.delete("0", "end")
         try:
@@ -163,14 +172,16 @@ class AppApplyTemplate(Toplevel):
             self.LSTTraductions.insert(VAR_row, l.titre)
             VAR_row += 1
 
-    def do_SelectTraductions(self, event):
+    def do_select_traduction(self, event):
         try:
             self.Traduction = self.LSTTraductions.selection_get()
         except:
             pass
         self.LSTLivres.delete("0", "end")
         VAR_row = 0
-        for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
+        for l in Livres.select().where(
+            Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)
+        ):
             if len(l.Nom_Livre) > 0:
                 self.LSTLivres.insert(VAR_row, l.Nom_Livre.strip())
             else:
@@ -201,8 +212,7 @@ class AppApplyTemplate(Toplevel):
         self.do_crawl_templates()
 
     def do_code_langue(self, code):
-        """ Retourne le code langue en fonction du code langue ou de la description langue
-        """
+        """Retourne le code langue en fonction du code langue ou de la description langue"""
         for l in self.langues:
             if l[0] == code:
                 return code
@@ -210,8 +220,7 @@ class AppApplyTemplate(Toplevel):
                 return l[0]
 
     def do_langue(self, code):
-        """ Retourne la langue en fonction du code langue
-        """
+        """Retourne la langue en fonction du code langue"""
         for l in self.langues:
             if l[1] == code:
                 return code
@@ -242,15 +251,20 @@ class AppApplyTemplate(Toplevel):
             return 0
         s = pygame.mixer.Sound(repertoire_script + "sounds/mgb-7.ogg")
         s.play()
-        for l in self.template:
-            self.LSTLivres.insert(VAR_row, self.template[VAR_row][0])
-            q = Livres.update(
-                {Livres.Nom_Livre: self.template[VAR_row][0], Livres.Shortcut: self.template[VAR_row][1]}).where(
-                Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction,
-                                                         Livres.N_Livres == VAR_row + 1)
+        self.LSTLivres.insert(VAR_row, self.template[VAR_row][0])
+        q = Livres.update(
+            {
+                Livres.Nom_Livre: self.template[VAR_row][0],
+                Livres.Shortcut: self.template[VAR_row][1],
+            }
+        ).where(
+            Livres.ID_Bible
+            == Bibles.select().where(
+                Bibles.titre == self.Traduction, Livres.N_Livres == VAR_row + 1
             )
-            q.execute()
-            VAR_row += 1
+        )
+        q.execute()
+        VAR_row += 1
 
     def run(self):
         self.interface()

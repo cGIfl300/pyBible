@@ -24,39 +24,78 @@ from creer_bouton import *
 
 
 class app_config_mysql(Toplevel):
-    """ Application configuration sqlite
-    """
+    """Application configuration sqlite"""
 
     def __init__(self, debug=False):
         Toplevel.__init__(self)
         self.debug = debug
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("Configuration MySQL"))
 
         self.panel_001 = Label(self, bg=couleur_fond)
 
-        self.lbl_db_server = Label(self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Serveur: "))
+        self.lbl_db_server = Label(
+            self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Serveur: ")
+        )
 
-        self.entry_db_server = Entry(self.panel_001, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
+        self.entry_db_server = Entry(
+            self.panel_001,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
 
-        self.lbl_db_username = Label(self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Nom d'utilisateur: "))
+        self.lbl_db_username = Label(
+            self.panel_001,
+            fg=couleur_texte,
+            bg=couleur_fond,
+            text=_("Nom d'utilisateur: "),
+        )
 
-        self.entry_db_username = Entry(self.panel_001, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
+        self.entry_db_username = Entry(
+            self.panel_001,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
 
-        self.lbl_db_password = Label(self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Mot de passe: "))
+        self.lbl_db_password = Label(
+            self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Mot de passe: ")
+        )
 
-        self.entry_db_password = Entry(self.panel_001, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
+        self.entry_db_password = Entry(
+            self.panel_001,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
 
-        self.lbl_db_database = Label(self.panel_001, fg=couleur_texte, bg=couleur_fond, text=_("Base de données: "))
+        self.lbl_db_database = Label(
+            self.panel_001,
+            fg=couleur_texte,
+            bg=couleur_fond,
+            text=_("Base de données: "),
+        )
 
-        self.entry_db_database = Entry(self.panel_001, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
+        self.entry_db_database = Entry(
+            self.panel_001,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
 
-        self.lbl_db_port = Label(self.panel_001, fg=couleur_texte, bg=couleur_fond, text="Port: ")
+        self.lbl_db_port = Label(
+            self.panel_001, fg=couleur_texte, bg=couleur_fond, text="Port: "
+        )
 
-        self.entry_db_port = Entry(self.panel_001, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
+        self.entry_db_port = Entry(
+            self.panel_001,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
         self.entry_db_port.insert(0, "3306")
 
         self.btn_enregistrer = Button(
@@ -105,7 +144,7 @@ class app_config_mysql(Toplevel):
         except:
             port = 3306
 
-        generer_secret_garden(
+        generate_setup_file(
             db_type="mysql",
             db_server=self.entry_db_server.get(),
             db_username=self.entry_db_username.get(),

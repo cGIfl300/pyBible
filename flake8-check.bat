@@ -1,0 +1,1 @@
+flake8 --exclude data/,docs/,images/,locales/,sounds/,venv/ -v

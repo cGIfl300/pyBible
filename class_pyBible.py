@@ -36,33 +36,41 @@ class pyBible_Global:
         pass
 
     def chapitre_found(self, book, chapitre):
-        """ Retourne tous les versets d'un chapitre
-        """
+        """Retourne tous les versets d'un chapitre"""
         resultats = []
         l = Livres.get(
-            Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue),
-            Livres.N_Livres == book
+            Livres.ID_Bible
+            == Bibles.get(
+                Bibles.titre == self.traduction, Bibles.langue == self.langue
+            ),
+            Livres.N_Livres == book,
         )
         for v in Versets.select().where(
-                Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue),
-                Versets.ID_Livre == l,
-                Versets.N_Chapitre == chapitre,
+            Versets.ID_Bible
+            == Bibles.get(
+                Bibles.titre == self.traduction, Bibles.langue == self.langue
+            ),
+            Versets.ID_Livre == l,
+            Versets.N_Chapitre == chapitre,
         ):
             resultats.append([l.N_Livres, v.N_Chapitre, v.N_Verset, v.Texte])
             self.bookname = l.Nom_Livre
         return resultats
 
     def word_found(self, word):
-        """ Recherche un mot dans la Bible active
-        """
+        """Recherche un mot dans la Bible active"""
         word = word.upper()
         resultats = []
         for l in Livres.select().where(
-                Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue)
+            Livres.ID_Bible
+            == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue)
         ):
             for v in Versets.select().where(
-                    Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue),
-                    Versets.ID_Livre == l
+                Versets.ID_Bible
+                == Bibles.get(
+                    Bibles.titre == self.traduction, Bibles.langue == self.langue
+                ),
+                Versets.ID_Livre == l,
             ):
                 verset = str(v.Texte)
                 verset = verset.upper()
@@ -72,14 +80,19 @@ class pyBible_Global:
         return resultats
 
     def verset_found(self, book, chapitre, verset):
-        """ Recherche d'un verset
-        """
+        """Recherche d'un verset"""
         try:
             record = Versets.get(
-                Versets.ID_Bible == Bibles.get(Bibles.langue == self.langue, Bibles.titre == self.traduction),
+                Versets.ID_Bible
+                == Bibles.get(
+                    Bibles.langue == self.langue, Bibles.titre == self.traduction
+                ),
                 Versets.ID_Livre
                 == Livres.get(
-                    Livres.ID_Bible == Bibles.get(Bibles.langue == self.langue, Bibles.titre == self.traduction),
+                    Livres.ID_Bible
+                    == Bibles.get(
+                        Bibles.langue == self.langue, Bibles.titre == self.traduction
+                    ),
                     Livres.N_Livres == book,
                 ),
                 Versets.N_Chapitre == chapitre,

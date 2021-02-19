@@ -35,7 +35,12 @@ from class_autobutton import creer_autobutton
 from class_pyBible import pyBible_Global
 from db_model import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
@@ -44,8 +49,7 @@ pygame.init()
 
 
 class pyBible(Tk):
-    """ Interface graphique ...
-    """
+    """Interface graphique ..."""
 
     def __init__(self, debug=False):
         Tk.__init__(self)
@@ -57,15 +61,16 @@ class pyBible(Tk):
         self.chapitre = 1
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("pyBible"))
         self.panel_menu = Canvas(self, bg=couleur_fond)
         self.panel_selection = Canvas(self, bg=couleur_fond)
         self.panel_contenu = Canvas(self, bg=couleur_fond)
         self.panel_menu_bas = Canvas(self, bg=couleur_fond)
 
-        self.menu_marque_pages = creer_autobutton(self.panel_menu, texte=_("Marque\nPage"))
+        self.menu_marque_pages = creer_autobutton(
+            self.panel_menu, texte=_("Marque\nPage")
+        )
         self.menu_rechercher = creer_autobutton(self.panel_menu, texte=_("Rechercher"))
 
         self.menu_precedent = creer_autobutton(self.panel_menu_bas, texte="<")
@@ -75,9 +80,16 @@ class pyBible(Tk):
 
         self.menu_selection = creer_autobutton(self.panel_selection, texte=nom_complet)
 
-        self.SCROLL_001 = Scrollbar(self.panel_contenu, bg=couleur_fond, orient=VERTICAL)
-        self.contenu = Text(self.panel_contenu, bg=couleur_fond, fg=couleur_texte, wrap=WORD,
-                            yscrollcommand=self.SCROLL_001.set)
+        self.SCROLL_001 = Scrollbar(
+            self.panel_contenu, bg=couleur_fond, orient=VERTICAL
+        )
+        self.contenu = Text(
+            self.panel_contenu,
+            bg=couleur_fond,
+            fg=couleur_texte,
+            wrap=WORD,
+            yscrollcommand=self.SCROLL_001.set,
+        )
 
         self.SCROLL_001.config(command=self.contenu.yview)
         self.contenu.config(state=DISABLED)
@@ -106,14 +118,12 @@ class pyBible(Tk):
         app.run()
 
     def do_SelectionTraduction(self, event):
-        """ Sélection d'une nouvelle traduction et / ou chapitre
-        """
+        """Sélection d'une nouvelle traduction et / ou chapitre"""
         app = SelectTranslation(self)
         app.run()
 
     def do_MenuRechercher(self, event):
-        """ Recherche d'un mot ou d'une phrase
-        """
+        """Recherche d'un mot ou d'une phrase"""
         app = AppRechercher(langue=self.langue, traduction=self.traduction)
         app.run()
 
@@ -139,12 +149,18 @@ class pyBible(Tk):
     def max_chapitre(self):
         total = 0
         l = Livres.get(
-            Livres.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue),
+            Livres.ID_Bible
+            == Bibles.get(
+                Bibles.titre == self.traduction, Bibles.langue == self.langue
+            ),
             Livres.N_Livres == self.book,
         )
         v = Versets.select().where(
-            Versets.ID_Bible == Bibles.get(Bibles.titre == self.traduction, Bibles.langue == self.langue),
-            Versets.ID_Livre == l
+            Versets.ID_Bible
+            == Bibles.get(
+                Bibles.titre == self.traduction, Bibles.langue == self.langue
+            ),
+            Versets.ID_Livre == l,
         )
         ancien_chapitre = ""
         for liste in v:
@@ -168,8 +184,7 @@ class pyBible(Tk):
                 self.nouveau_chapitre(self.book, self.chapitre)
 
     def nouveau_chapitre(self, book, chapitre):
-        """ Affiche un chapitre
-        """
+        """Affiche un chapitre"""
         App = AppIamReading(book=book, chapitre=chapitre)
         App.run()
         self.contenu.config(state=NORMAL)

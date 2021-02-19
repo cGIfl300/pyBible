@@ -29,7 +29,12 @@ from peewee import *
 from creer_bouton import creer_bouton
 from db_model import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
@@ -38,8 +43,7 @@ pygame.init()
 
 
 class SelectTranslation(Toplevel):
-    """ Applique un modèle de nomage de livres à une Bible
-    """
+    """Applique un modèle de nomage de livres à une Bible"""
 
     def __init__(self, master, debug=False):
         Toplevel.__init__(self)
@@ -51,8 +55,7 @@ class SelectTranslation(Toplevel):
         self.master = master
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("Choisir Traduction"))
 
         self.panel0 = Canvas(self, bg=couleur_fond)
@@ -109,8 +112,12 @@ class SelectTranslation(Toplevel):
         """ Implantation des composants
         """
 
-        self.menu_annuler = creer_bouton(self.panel_menu, image_locale="images/menu_annuler", cote=TOP)
-        self.menu_valider = creer_bouton(self.panel_menu, image_locale="images/menu_enregistrer", cote=TOP)
+        self.menu_annuler = creer_bouton(
+            self.panel_menu, image_locale="images/menu_annuler", cote=TOP
+        )
+        self.menu_valider = creer_bouton(
+            self.panel_menu, image_locale="images/menu_enregistrer", cote=TOP
+        )
 
         self.panel0.pack(fill=BOTH, expand=True)
         self.panel1.pack(fill=BOTH, expand=True)
@@ -178,7 +185,9 @@ class SelectTranslation(Toplevel):
         self.LSTLivres.delete("0", "end")
         VAR_row = 0
         self.TableauLivres = []
-        for l in Livres.select().where(Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)):
+        for l in Livres.select().where(
+            Livres.ID_Bible == Bibles.select().where(Bibles.titre == self.Traduction)
+        ):
             if len(l.Nom_Livre) > 0:
                 self.LSTLivres.insert(VAR_row, l.Nom_Livre.strip())
                 self.TableauLivres.append([l.Nom_Livre.strip(), l.N_Livres])
@@ -200,13 +209,19 @@ class SelectTranslation(Toplevel):
         self.LSTChapitres.delete("0", "end")
         try:
             l = Livres.get(
-                Livres.ID_Bible == Bibles.get(Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue),
+                Livres.ID_Bible
+                == Bibles.get(
+                    Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue
+                ),
                 Livres.N_Livres == self.book,
             )
         except:
             return 0
         v = Versets.select().where(
-            Versets.ID_Bible == Bibles.get(Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue),
+            Versets.ID_Bible
+            == Bibles.get(
+                Bibles.titre == self.Traduction, Bibles.langue == self.Code_Langue
+            ),
             Versets.ID_Livre == l,
         )
         ancien_chapitre = ""
@@ -241,8 +256,7 @@ class SelectTranslation(Toplevel):
             VAR_row += 1
 
     def do_code_langue(self, code):
-        """ Retourne le code langue en fonction du code langue ou de la description langue
-        """
+        """Retourne le code langue en fonction du code langue ou de la description langue"""
         for l in self.langues:
             if l[0] == code:
                 return code
@@ -250,8 +264,7 @@ class SelectTranslation(Toplevel):
                 return l[0]
 
     def do_langue(self, code):
-        """ Retourne la langue en fonction du code langue
-        """
+        """Retourne la langue en fonction du code langue"""
         for l in self.langues:
             if l[1] == code:
                 return code

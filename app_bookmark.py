@@ -31,17 +31,29 @@ from class_pyBible import pyBible_Global
 from configuration import *
 from image_set import image_set
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
 
 
 class AppBookmark(Toplevel):
-    """ Interface graphique ...
-    """
+    """Interface graphique ..."""
 
-    def __init__(self, master, debug=False, langue="FRE", traduction="French Louis Segond", book=1, chapitre=1):
+    def __init__(
+        self,
+        master,
+        debug=False,
+        langue="FRE",
+        traduction="French Louis Segond",
+        book=1,
+        chapitre=1,
+    ):
         Toplevel.__init__(self)
         self.debug = debug
         self.langue = langue
@@ -53,8 +65,7 @@ class AppBookmark(Toplevel):
         self.moteur = pyBible_Global(langue=self.langue, traduction=self.traduction)
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("Marque Pages"))
 
         self.panel_menu = Canvas(self, bg=couleur_fond)
@@ -63,7 +74,9 @@ class AppBookmark(Toplevel):
         self.menu_delete = creer_autobutton(self.panel_menu, texte=_("Supprimer"))
         self.menu_go = creer_autobutton(self.panel_menu, texte=_("Aller"))
 
-        self.SCROLL_001 = Scrollbar(self.panel_contenu, bg=couleur_fond, orient=VERTICAL)
+        self.SCROLL_001 = Scrollbar(
+            self.panel_contenu, bg=couleur_fond, orient=VERTICAL
+        )
         self.LSTBookmarks = Listbox(
             self.panel_contenu,
             selectmode=SINGLE,
@@ -79,7 +92,9 @@ class AppBookmark(Toplevel):
         """
         self.panel_menu.pack(fill=BOTH, expand=True)
         self.panel_contenu.pack(fill=BOTH, expand=True)
-        self.decoration = image_set(self.panel_contenu, image_locale="images/vertical_spacer")
+        self.decoration = image_set(
+            self.panel_contenu, image_locale="images/vertical_spacer"
+        )
         self.LSTBookmarks.pack(fill=BOTH, expand=True, side=LEFT)
         self.SCROLL_001.pack(side=RIGHT, fill=Y)
 
@@ -91,8 +106,7 @@ class AppBookmark(Toplevel):
         self.bookmarks_refresh()
 
     def do_MenuDelete(self, event):
-        """ Suppression d'un bookmark
-        """
+        """Suppression d'un bookmark"""
         try:
             selection = self.LSTBookmarks.curselection()
             livre = int(self.bookmarks[selection[0] + 1][1])
@@ -110,7 +124,9 @@ class AppBookmark(Toplevel):
             if l[0] == "s":
                 if not ((int(l[1]) is livre) and (int(l[2]) is chapitre)):
                     if self.debug:
-                        print(f"Livre: {livre} is {l[1]} | Chapitre: {chapitre} is {l[2]}")
+                        print(
+                            f"Livre: {livre} is {l[1]} | Chapitre: {chapitre} is {l[2]}"
+                        )
                     fichier.write(f"s,{l[1]},{l[2]}\n")
 
         fichier.close()
@@ -127,12 +143,12 @@ class AppBookmark(Toplevel):
             pass
 
     def bookmark(self):
-        """ Bookmarks a chapiter
+        """Bookmarks a chapiter
         emplacement:
         data/bookmarks.dat
         format:
         o,1,1
-        
+
         Le premier caractère correspond au type de bookmark:
         o origin: c'est le bookmark qui est récupéré au lancement de l'application
         s second: c'est un bookmark classique
@@ -149,8 +165,7 @@ class AppBookmark(Toplevel):
         fichier.close()
 
     def bookmarks_refresh(self):
-        """ Rafraîchir la liste des bookmarks
-        """
+        """Rafraîchir la liste des bookmarks"""
         self.bookmarks = []
         self.LSTBookmarks.delete("0", "end")
         fichier = codecs.open(repertoire_script + "data/bookmarks.dat", "r", "utf-8")

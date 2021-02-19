@@ -28,14 +28,14 @@ from configuration import *
 
 
 class creer_bouton:
-    """ Ajouter un bouton personnalisé avec une image
+    """Ajouter un bouton personnalisé avec une image
     qui change en fonction du survol de celui-ci.
-    
+
     exemple d'utilisation:
-    
+
     menu1 = creer_bouton(w, image_locale = 'images/mon_image')
     menu1.btn.bind("<Button-1>", do_mafonction)
-    
+
     images/mon_image.png sera utilisé par défaut
     images/mon_image_over.png sera utilisé quand le curseur sera au dessus du bouton
     """

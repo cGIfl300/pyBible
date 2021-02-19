@@ -25,14 +25,19 @@ import gettext
 from app_config_mysql import *
 from app_config_sqlite import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
 
 
 class app_secret_garden:
-    """ Interface graphique ...
+    """Interface graphique ...
     Création du fichier de configuration secret_garden.py
     """
 
@@ -40,8 +45,7 @@ class app_secret_garden:
         self.debug = debug
 
     def interface(self):
-        """ Interface de la fenêtre de configuration
-        """
+        """Interface de la fenêtre de configuration"""
         self.tl = Toplevel()
         self.tl.title("secret_garden")
         self.tl.panel_001 = Label(self.tl, bg=couleur_fond)
@@ -56,9 +60,13 @@ local: secret_garden.py"""
             fg=couleur_texte,
         )
 
-        self.tl.menu1 = creer_bouton(self.tl.panel_001, image_locale="images/menu_mysql", cote=BOTTOM)
+        self.tl.menu1 = creer_bouton(
+            self.tl.panel_001, image_locale="images/menu_mysql", cote=BOTTOM
+        )
         self.tl.menu1.btn.bind("<Button-1>", self.do_create_mysql)
-        self.tl.menu2 = creer_bouton(self.tl.panel_001, image_locale="images/menu_sqlite", cote=BOTTOM)
+        self.tl.menu2 = creer_bouton(
+            self.tl.panel_001, image_locale="images/menu_sqlite", cote=BOTTOM
+        )
         self.tl.menu2.btn.bind("<Button-1>", self.do_create_sqlite)
 
         """ Implantation des composants
@@ -71,7 +79,7 @@ local: secret_garden.py"""
         self.interface()
 
     def do_create_sqlite(self, event):
-        """ Création du fichier de configuration secret_garden.py
+        """Création du fichier de configuration secret_garden.py
         format sqlite
         """
         if self.debug:
@@ -80,7 +88,7 @@ local: secret_garden.py"""
         app.run()
 
     def do_create_mysql(self, event):
-        """ Création du fichier de configuration secret_garden.py
+        """Création du fichier de configuration secret_garden.py
         format mysql
         """
         if self.debug:

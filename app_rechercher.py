@@ -29,7 +29,12 @@ from peewee import *
 from class_pyBible import pyBible_Global
 from configuration import *
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
@@ -38,10 +43,16 @@ pygame.init()
 
 
 class AppRechercher(Toplevel):
-    """ Interface graphique ...
-    """
+    """Interface graphique ..."""
 
-    def __init__(self, debug=False, langue="FRE", traduction="French Louis Segond", book=1, chapitre=1):
+    def __init__(
+        self,
+        debug=False,
+        langue="FRE",
+        traduction="French Louis Segond",
+        book=1,
+        chapitre=1,
+    ):
         Toplevel.__init__(self)
         self.debug = debug
         self.langue = langue
@@ -51,19 +62,30 @@ class AppRechercher(Toplevel):
         self.moteur = pyBible_Global(langue=self.langue, traduction=self.traduction)
 
     def interface(self):
-        """ Interface de la fenêtre
-        """
+        """Interface de la fenêtre"""
         self.title(_("Rechercher"))
 
         self.panel_menu = Canvas(self, bg=couleur_fond)
         self.panel_contenu = Canvas(self, bg=couleur_fond)
 
-        self.SCROLL_001 = Scrollbar(self.panel_contenu, bg=couleur_fond, orient=VERTICAL)
-        self.contenu = Text(self.panel_contenu, bg=couleur_fond, fg=couleur_texte, wrap=WORD,
-                            yscrollcommand=self.SCROLL_001.set)
+        self.SCROLL_001 = Scrollbar(
+            self.panel_contenu, bg=couleur_fond, orient=VERTICAL
+        )
+        self.contenu = Text(
+            self.panel_contenu,
+            bg=couleur_fond,
+            fg=couleur_texte,
+            wrap=WORD,
+            yscrollcommand=self.SCROLL_001.set,
+        )
         self.SCROLL_001.config(command=self.contenu.yview)
         self.contenu.config(state=DISABLED)
-        self.entry_recherche = Entry(self.panel_menu, bg=couleur_fond_saisie, fg=couleur_texte_saisie, relief="flat")
+        self.entry_recherche = Entry(
+            self.panel_menu,
+            bg=couleur_fond_saisie,
+            fg=couleur_texte_saisie,
+            relief="flat",
+        )
 
         """ Implantation des composants
         """
@@ -80,8 +102,7 @@ class AppRechercher(Toplevel):
         self.entry_recherche.bind("<KP_Enter>", self.do_Recherche)
 
     def do_Recherche(self, event):
-        """ Recherche d'un mot ou d'une phrase dans la traduction active
-        """
+        """Recherche d'un mot ou d'une phrase dans la traduction active"""
         phrase = self.entry_recherche.get()
         résultats = self.moteur.word_found(phrase)
         self.entry_recherche.config(state=DISABLED)

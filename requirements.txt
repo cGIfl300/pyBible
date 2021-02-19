@@ -5,3 +5,6 @@ python-i18n
 Sphinx
 tk
 virtualenv
+peewee
+flake8
+flake8-html

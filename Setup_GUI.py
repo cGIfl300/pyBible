@@ -20,7 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-import gettext
 import time
 
 from acquiert_bible import *
@@ -30,7 +29,12 @@ from configuration_langues import Configuration_Langues
 from db_creation import *
 from image_set import image_set
 
-fr = gettext.translation("base", localedir=repertoire_script + "locales", languages=[langue_appli], fallback=False)
+fr = gettext.translation(
+    "base",
+    localedir=repertoire_script + "locales",
+    languages=[langue_appli],
+    fallback=False,
+)
 fr.install()
 _ = fr.gettext
 ngettext = fr.ngettext
@@ -48,7 +52,7 @@ def do_ImportXML(event):
         for name in files:
             if name.endswith((".xml")):
                 traductions = traductions + 1
-                app = acquiert_bible(fichier_xml=os.path.join(root, name), debug=debug)
+                app = Acquiert_Bible(fichier_xml=os.path.join(root, name), debug=debug)
                 app.run()
     print(_("Vous avez {} traductions.".format(traductions)))
     print(_("Temps d'execution: %s secondes" % (round(time.time() - start_time))))
@@ -81,9 +85,15 @@ if __name__ == "__main__":
     w.panel_002 = Label(w, bg=couleur_fond, fg=couleur_texte)
     w.panel_003 = Label(w, bg=couleur_fond, fg=couleur_texte)
 
-    w.menu11 = creer_bouton(w.panel_001, image_locale="images/menu_secret_garden", cote=TOP)
-    w.menu12 = creer_bouton(w.panel_001, image_locale="images/menu_initialiser_base_locale", cote=TOP)
-    w.menu13 = creer_bouton(w.panel_001, image_locale="images/menu_importer_bible_xml", cote=TOP)
+    w.menu11 = creer_bouton(
+        w.panel_001, image_locale="images/menu_secret_garden", cote=TOP
+    )
+    w.menu12 = creer_bouton(
+        w.panel_001, image_locale="images/menu_initialiser_base_locale", cote=TOP
+    )
+    w.menu13 = creer_bouton(
+        w.panel_001, image_locale="images/menu_importer_bible_xml", cote=TOP
+    )
     w.menu14 = creer_bouton(w.panel_001, image_locale="images/menu_elangues", cote=TOP)
     w.menu15 = creer_bouton(w.panel_001, image_locale="images/menu_ebibles", cote=TOP)
 

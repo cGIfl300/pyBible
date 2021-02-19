@@ -27,9 +27,8 @@ from peewee import *
 from db_model import *
 
 
-class acquiert_bible:
-    """ Permet l'ajout d'une bible dans la base de donnée principale
-    """
+class Acquiert_Bible:
+    """Permet l'ajout d'une bible dans la base de donnée principale"""
 
     def __init__(self, fichier_xml, debug=False):
         self.fichier_xml = fichier_xml
@@ -90,14 +89,18 @@ class acquiert_bible:
                 chapitre_nbr = 0
                 # Ajouter un nouveau numéro de livre
                 record = Livres(
-                    ID_Bible=Bibles.get(langue=langue, titre=titre, description=description),
+                    ID_Bible=Bibles.get(
+                        langue=langue, titre=titre, description=description
+                    ),
                     N_Livres=livre_nbr,
                     Nom_Livre=" ",
                     Shortcut=" ",
                 )
                 lignes = record.save()
 
-                Ref_Bibles = Bibles.get(langue=langue, titre=titre, description=description)
+                Ref_Bibles = Bibles.get(
+                    langue=langue, titre=titre, description=description
+                )
                 Ref_Livres = Livres.get(ID_Bible=Ref_Bibles, N_Livres=livre_nbr)
 
                 for chapitre in livre:
